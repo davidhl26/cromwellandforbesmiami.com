@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Real Estate Advisors — Cromwell &amp; Forbes Miami</title>
+<meta name="description" content="Choose your Cromwell & Forbes real estate advisor in Miami Beach, tell us about your property goals — we organize everything.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink-950: #050D14; --ink-900: #07131E; --ink-800: #0B1C2B;
+    --frost: #F4F7FA; --frost-dim: #C2CEDA; --frost-faint: #8DA0B3;
+    --gold: #C8A96E; --gold-bright: #E3C98F; --line: rgba(200,169,110,0.22);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', system-ui, sans-serif; font-weight: 300; background: var(--ink-950); color: var(--frost); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; padding: 1.2rem clamp(1rem, 4vw, 4rem); border-bottom: 1px solid var(--line); }
+  .wordmark { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(0.92rem, 2.5vw, 1.05rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--frost); text-decoration: none; }
+  .wordmark .amp { color: var(--gold); }
+  .topbar-right { display: flex; align-items: center; gap: 0.9rem; }
+  .topbar .phone { color: var(--frost-dim); text-decoration: none; font-size: 0.85rem; }
+  .lang-switch { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .lang-switch button { background: none; border: none; color: var(--frost-faint); font-family: inherit; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; padding: 0.34rem 0.65rem; cursor: pointer; transition: color 150ms ease, background 150ms ease; }
+  .lang-switch button[aria-pressed="true"] { color: var(--ink-950); background: var(--gold); }
+  @media (max-width: 720px) { .topbar .phone { display: none; } }
+
+  .head { text-align: center; padding: clamp(2.2rem, 6vw, 4rem) clamp(1rem, 4vw, 4rem) 0; }
+  .kicker { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold); }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(2.1rem, 5.5vw, 3.8rem); line-height: 1.05; margin-top: 0.8rem; text-wrap: balance; }
+  h1 em { font-style: italic; color: var(--gold-bright); }
+  .lead { color: var(--frost-dim); max-width: 38rem; margin: 1rem auto 0; text-wrap: pretty; }
+  .steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem 2.6rem; margin: 1.8rem auto 0; padding: 0 1rem; list-style: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--frost-faint); }
+  .steps b { color: var(--gold); font-weight: 500; margin-right: 0.4rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; }
+
+  .catalogue { max-width: 1200px; margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 4rem); display: grid; grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr)); gap: clamp(1.1rem, 3vw, 2rem); }
+
+  .agent { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--ink-800); text-align: left; cursor: pointer; padding: 0; display: block; width: 100%; color: inherit; font: inherit; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms ease; }
+  .agent:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+  .agent:active { transform: scale(0.985); }
+  .agent:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .agent-media { display: block; position: relative; aspect-ratio: 4 / 5; background: linear-gradient(165deg, var(--ink-800), var(--ink-950)); }
+  .agent-media img, .agent-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .agent-media video { opacity: 0; transition: opacity 300ms ease; }
+  .agent-media video[data-playing] { opacity: 1; }
+  .agent-media .pending { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.7rem; background: radial-gradient(circle at 35% 20%, rgba(200,169,110,0.18), transparent 60%), linear-gradient(165deg, var(--ink-800), var(--ink-950)); color: var(--frost-faint); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .agent-media .pending .mono { width: 70px; height: 70px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); }
+  .flag { position: absolute; right: 0.65rem; bottom: 0.65rem; width: 32px; height: 24px; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.28); }
+  .flag svg { display: block; width: 100%; height: 100%; }
+  .agent .body { display: block; padding: 1.05rem 1.2rem 1.2rem; }
+  .agent strong { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.35rem; display: block; }
+  .agent .zones { display: block; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 0.25rem; }
+  .agent .langues { display: block; font-size: 0.8rem; color: var(--frost-dim); margin-top: 0.35rem; }
+  .agent .bio { display: block; font-size: 0.85rem; color: var(--frost-dim); margin-top: 0.5rem; }
+  .agent .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+  .agent .tags span { font-size: 0.66rem; letter-spacing: 0.06em; border: 1px solid var(--line); border-radius: 999px; padding: 0.22rem 0.6rem; color: var(--frost-dim); }
+  .agent .choose { display: block; margin: 1rem 1.2rem 1.2rem; text-align: center; background: linear-gradient(140deg, var(--gold-bright), var(--gold)); color: var(--ink-950); border-radius: 8px; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1rem; transition: box-shadow 160ms var(--ease-out); }
+  .agent:hover .choose { box-shadow: 0 8px 22px rgba(200,169,110,0.35); }
+  .agent[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 30px 60px rgba(0,0,0,0.5); }
+  .agent[aria-pressed="true"] .choose { background: var(--ink-900); color: var(--gold-bright); border: 1px solid var(--gold); }
+  .agent[aria-pressed="true"] .choose::before { content: '✓ '; }
+
+  .nopref { text-align: center; padding: 0 1rem 1rem; }
+  .nopref button { background: none; border: none; color: var(--frost-faint); font: inherit; font-size: 0.88rem; cursor: pointer; border-bottom: 1px solid var(--line); padding-bottom: 0.1rem; transition: color 150ms ease; }
+  .nopref button:hover { color: var(--gold-bright); }
+  .nopref button[aria-pressed="true"] { color: var(--gold-bright); border-color: var(--gold-bright); }
+
+  .form-sec { padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 4rem) clamp(3rem, 7vw, 5rem); background: var(--ink-900); border-top: 1px solid var(--line); }
+  .card { max-width: 640px; margin: 0 auto; background: rgba(7,19,30,0.8); border: 1px solid var(--line); border-radius: 16px; padding: clamp(1.4rem, 3vw, 2.2rem); box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+  .card h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.7rem; line-height: 1.12; text-align: center; }
+  .card .hint { font-size: 0.85rem; color: var(--frost-faint); margin-top: 0.4rem; text-align: center; }
+  .chip { display: none; margin: 1rem auto 0; width: fit-content; max-width: 100%; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.12); border: 1px solid var(--gold); border-radius: 999px; padding: 0.45rem 1rem; font-size: 0.85rem; color: var(--gold-bright); }
+  .chip[data-on] { display: flex; }
+  .chip button { background: none; border: none; color: var(--frost-faint); font-size: 1rem; cursor: pointer; line-height: 1; }
+  .field { margin-top: 1rem; }
+  .field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--frost-faint); margin-bottom: 0.35rem; }
+  .field input, .field select, .field textarea { width: 100%; background: rgba(244,247,250,0.045); border: 1px solid rgba(194,206,218,0.18); border-radius: 8px; color: var(--frost); font-family: inherit; font-size: 0.95rem; font-weight: 300; padding: 0.72rem 0.9rem; transition: border-color 150ms ease; }
+  .field textarea { min-height: 74px; resize: vertical; }
+  .field select option { background: var(--ink-800); }
+  .field :is(input, select, textarea):focus { outline: none; border-color: var(--gold); }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  @media (max-width: 640px) { .frow { grid-template-columns: 1fr; } }
+  .btn { display: block; width: 100%; margin-top: 1.3rem; background: linear-gradient(140deg, var(--gold-bright), var(--gold)); color: var(--ink-950); border: none; border-radius: 8px; font-family: inherit; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.95rem 1.5rem; cursor: pointer; text-align: center; transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out); box-shadow: 0 8px 26px rgba(200,169,110,0.25); }
+  .btn:active { transform: scale(0.97); }
+  .footnote { margin-top: 0.9rem; font-size: 0.72rem; color: var(--frost-faint); text-align: center; }
+  .alt { margin-top: 1rem; text-align: center; font-size: 0.88rem; color: var(--frost-faint); }
+  .alt a { color: var(--gold-bright); text-decoration: none; }
+  .hp { position: absolute; left: -9999px; opacity: 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem clamp(1rem, 4vw, 4rem) 2.6rem; text-align: center; font-size: 0.75rem; color: var(--frost-faint); }
+  footer p + p { margin-top: 0.5rem; }
+  footer .eho { letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.66rem; margin-top: 1rem; }
+
+  .sticky-cta { display: none; }
+  @media (max-width: 720px) {
+    .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom)); background: rgba(5,13,20,0.92); backdrop-filter: blur(10px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform 250ms var(--ease-out); }
+    .sticky-cta[data-shown] { transform: none; }
+    .sticky-cta .btn { margin-top: 0; padding: 0.8rem 1rem; font-size: 0.85rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .agent, .agent:hover, .agent:active { transition: none; transform: none; }
+    .agent-media video { display: none; }
+    .sticky-cta { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="wordmark" href="index.html">Cromwell <span class="amp">&amp;</span> Forbes</a>
+  <div class="topbar-right">
+    <a class="phone" href="tel:+13059051305">+1 (305) 905-1305</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+    </div>
+  </div>
+</nav>
+
+<header class="head">
+  <p class="kicker" data-i18n="kicker">The team — Miami Beach</p>
+  <h1 data-i18n-html="h1">Choose your <em>real estate advisor</em>.</h1>
+  <p class="lead" data-i18n="lead">Click on your advisor, tell us what you're looking for — we take care of everything else: the introduction, the property selection and the visit itself.</p>
+  <ul class="steps">
+    <li><b>1</b><span data-i18n="s1">Pick your advisor</span></li>
+    <li><b>2</b><span data-i18n="s2">Describe your search</span></li>
+    <li><b>3</b><span data-i18n="s3">We organize the visit</span></li>
+  </ul>
+</header>
+
+<main class="catalogue" id="catalogue" aria-label="Our advisors">
+  <noscript><p style="grid-column: 1 / -1; text-align: center; color: var(--frost-dim);">The catalog requires JavaScript. Reach us directly: <a href="https://wa.me/13059051305" style="color: var(--gold-bright);">WhatsApp</a> · +1 (305) 905-1305</p></noscript>
+</main>
+<p class="nopref"><button type="button" id="noPref" aria-pressed="false" data-i18n="noPref">No preference — pick for me →</button></p>
+
+<section class="form-sec" id="form">
+  <div class="card">
+    <h2 data-i18n="fTitle">Let's organize your visit</h2>
+    <p class="hint" data-i18n="fHint">60 seconds. We call you back within 1 business day to plan everything.</p>
+    <div class="chip" id="chip" role="status"><span id="chipTxt"></span><button type="button" id="chipClear" aria-label="Clear selection">✕</button></div>
+    <form name="visite-miami" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="visite-miami">
+      <input type="hidden" name="agente" id="agenteField" value="No preference">
+      <input type="hidden" name="langue" id="langField" value="en">
+      <p class="hp"><label>Do not fill: <input name="bot-field"></label></p>
+      <div class="frow">
+        <div class="field"><label for="f-type" data-i18n="lType">Property type</label>
+          <select id="f-type" name="type_de_bien">
+            <option value="condo" data-i18n="oCondo">Condo / apartment</option>
+            <option value="maison" data-i18n="oHouse">House</option>
+            <option value="penthouse">Penthouse</option>
+            <option value="neuf" data-i18n="oNew">New development</option>
+            <option value="autre" data-i18n="oOther">Other / not sure yet</option>
+          </select></div>
+        <div class="field"><label for="f-quartier" data-i18n="lArea">Preferred area</label>
+          <select id="f-quartier" name="quartier">
+            <option value="south-beach">South Beach / Miami Beach</option>
+            <option value="brickell">Brickell / Downtown</option>
+            <option value="fisher">Fisher Island / Key Biscayne</option>
+            <option value="grove">Coconut Grove / Coral Gables</option>
+            <option value="conseil" data-i18n="oAdvise">Advise me based on my profile</option>
+          </select></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="f-budget" data-i18n="lBudget">Budget</label>
+          <select id="f-budget" name="budget">
+            <option value="<500k">&lt; $500K</option>
+            <option value="500k-1m">$500K – $1M</option>
+            <option value="1m-3m">$1M – $3M</option>
+            <option value=">3m">$3M +</option>
+            <option value="location" data-i18n="oRenting">I'm looking to rent</option>
+          </select></div>
+        <div class="field"><label for="f-quand" data-i18n="lWhen">Visit timing</label>
+          <select id="f-quand" name="quand">
+            <option value="asap" data-i18n="oAsap">As soon as possible</option>
+            <option value="mois" data-i18n="oMonth">This month</option>
+            <option value="1-3mois" data-i18n="o13">Within 1–3 months</option>
+            <option value="video" data-i18n="oVideo">By video first (I'm abroad)</option>
+          </select></div>
+      </div>
+      <div class="field"><label for="f-details" data-i18n="lDetails">Details (optional)</label>
+        <textarea id="f-details" name="details" placeholder="Ocean view a must, 2+ bedrooms, close to schools…" data-i18n-ph="phDetails"></textarea></div>
+      <div class="field"><label for="f-name" data-i18n="lName">Your name</label><input id="f-name" name="nom" type="text" required autocomplete="name" placeholder="First and last name" data-i18n-ph="phName"></div>
+      <div class="frow">
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" data-i18n-ph="phEmail"></div>
+        <div class="field"><label for="f-phone" data-i18n="lPhone">Phone / WhatsApp</label><input id="f-phone" name="telephone" type="tel" autocomplete="tel" placeholder="+1 305 555 0123"></div>
+      </div>
+      <button class="btn" type="submit" data-i18n="cta">Organize my visit</button>
+      <p class="footnote" data-i18n="foot">No obligation. Your details are shared only with Cromwell &amp; Forbes.</p>
+      <p class="alt"><span data-i18n="altTxt">In a hurry?</span> <a href="https://wa.me/13059051305" rel="noopener">WhatsApp</a> · <a href="tel:+13059051305">+1 (305) 905-1305</a></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Cromwell &amp; Forbes, Inc.</strong> — 690 Lincoln Rd, Suite 201, Miami Beach, FL 33139 · +1 (305) 905-1305</p>
+  <p data-i18n="legal">Licensed Florida real estate corporation (license CQ1044943, since 2013).</p>
+  <p class="eho">Equal Housing Opportunity</p>
+</footer>
+
+<div class="sticky-cta" id="stickyCta"><a class="btn" href="#form" style="display:block;text-decoration:none;" data-i18n="cta2">Organize my visit</a></div>
+
+<script src="agents.js"></script>
+<script>
+(function () {
+  /* ============ i18n ============ */
+  const I18N = {
+    es: {
+      kicker: 'El equipo — Miami Beach',
+      h1: 'Elige a tu <em>asesor inmobiliario</em>.',
+      lead: 'Haz clic en tu asesora, cuéntanos qué buscas — nosotros nos ocupamos del resto: el contacto, la selección de propiedades y la visita.',
+      s1: 'Elige a tu asesor', s2: 'Describe tu búsqueda', s3: 'Organizamos la visita',
+      noPref: 'Sin preferencia — elijan por mí →',
+      fTitle: 'Organicemos tu visita', fHint: '60 segundos. Te llamamos en 1 día hábil para planificarlo todo.',
+      chipPrefix: 'Tu asesor', noPrefValue: 'Sin preferencia',
+      lType: 'Tipo de propiedad', oCondo: 'Condo / apartamento', oHouse: 'Casa', oNew: 'Proyecto nuevo', oOther: 'Otro / aún no sé',
+      lArea: 'Zona preferida', oAdvise: 'Aconséjenme según mi perfil',
+      lBudget: 'Presupuesto', oRenting: 'Busco alquilar',
+      lWhen: 'Fecha de visita', oAsap: 'Lo antes posible', oMonth: 'Este mes', o13: 'En 1–3 meses', oVideo: 'Primero por video (estoy fuera)',
+      lDetails: 'Detalles (opcional)', phDetails: 'Vista al mar imprescindible, 2+ habitaciones, cerca de escuelas…',
+      lName: 'Tu nombre', phName: 'Nombre y apellido', phEmail: 'tu@ejemplo.com', lPhone: 'Teléfono / WhatsApp',
+      cta: 'Organizar mi visita', cta2: 'Organizar mi visita',
+      foot: 'Sin compromiso. Tus datos solo se comparten con Cromwell & Forbes.', altTxt: '¿Con prisa?',
+      legal: 'Corporación inmobiliaria con licencia de Florida (licencia CQ1044943, desde 2013).',
+      advisor: 'Tu asesor', comingSoon: 'Retrato próximamente', tourWith: 'Elegir a este asesor',
+      docTitle: 'Elige a tu asesora — Cromwell & Forbes Miami'
+    },
+    fr: {
+      kicker: 'L\'équipe — Miami Beach',
+      h1: 'Choisissez votre <em>conseiller immobilier</em>.',
+      lead: 'Cliquez sur votre conseillère, dites-nous ce que vous cherchez — on s\'occupe de tout le reste : la mise en contact, la sélection des biens et l\'organisation de la visite.',
+      s1: 'Choisissez votre conseiller', s2: 'Décrivez votre recherche', s3: 'On organise la visite',
+      noPref: 'Pas de préférence — choisissez pour moi →',
+      fTitle: 'Organisons votre visite', fHint: '60 secondes. On vous rappelle sous 24 h ouvrées pour tout planifier.',
+      chipPrefix: 'Votre conseiller', noPrefValue: 'Pas de préférence',
+      lType: 'Type de bien', oCondo: 'Condo / appartement', oHouse: 'Maison', oNew: 'Programme neuf', oOther: 'Autre / je ne sais pas encore',
+      lArea: 'Quartier souhaité', oAdvise: 'À conseiller selon mon profil',
+      lBudget: 'Budget', oRenting: 'Je cherche une location',
+      lWhen: 'Visite souhaitée', oAsap: 'Dès que possible', oMonth: 'Ce mois-ci', o13: 'D\'ici 1 à 3 mois', oVideo: 'D\'abord en vidéo (je suis à l\'étranger)',
+      lDetails: 'Précisions (optionnel)', phDetails: 'Vue mer indispensable, 2 chambres minimum, proche des écoles…',
+      lName: 'Votre nom', phName: 'Prénom et nom', phEmail: 'vous@exemple.com', lPhone: 'Téléphone / WhatsApp',
+      cta: 'Organiser ma visite', cta2: 'Organiser ma visite',
+      foot: 'Sans engagement. Vos coordonnées ne sont transmises qu\'à Cromwell & Forbes.', altTxt: 'Pressé ?',
+      legal: 'Agence immobilière licenciée en Floride (Real Estate Corporation, licence CQ1044943 depuis 2013).',
+      advisor: 'Votre conseiller', comingSoon: 'Portrait bientôt là', tourWith: 'Choisir ce conseiller',
+      docTitle: 'Choisissez votre conseillère — Cromwell & Forbes Miami'
+    }
+  };
+  const EN_CACHE = { advisor: 'Your advisor', comingSoon: 'Portrait coming soon', tourWith: 'Choose this advisor', chipPrefix: 'Your advisor', noPrefValue: 'No preference', docTitle: document.title };
+  document.querySelectorAll('[data-i18n], [data-i18n-html], [data-i18n-ph]').forEach(el => {
+    const k = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.i18nPh;
+    if (!(k in EN_CACHE)) EN_CACHE[k] = el.dataset.i18nPh ? el.placeholder : (el.dataset.i18nHtml ? el.innerHTML : el.textContent);
+  });
+  let LANG = 'en';
+  const dict = () => LANG === 'en' ? EN_CACHE : I18N[LANG];
+
+  function setLang(lang) {
+    LANG = lang;
+    const d = dict();
+    document.querySelectorAll('[data-i18n]').forEach(el => { const v = d[el.dataset.i18n]; if (v != null) el.textContent = v; });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { const v = d[el.dataset.i18nHtml]; if (v != null) el.innerHTML = v; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = d[el.dataset.i18nPh]; if (v != null) el.placeholder = v; });
+    document.documentElement.lang = lang;
+    document.title = d.docTitle || EN_CACHE.docTitle;
+    document.getElementById('langField').value = lang;
+    document.querySelectorAll('.lang-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    try { localStorage.setItem('cf-lang', lang); } catch (e) {}
+    renderCatalogue();
+  }
+  document.querySelectorAll('.lang-switch button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+  /* ============ Catalogue ============ */
+  const catalogue = document.getElementById('catalogue');
+  const chip = document.getElementById('chip'), chipTxt = document.getElementById('chipTxt');
+  const agenteField = document.getElementById('agenteField');
+  const noPref = document.getElementById('noPref');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hoverable = matchMedia('(hover: hover)').matches;
+  let selectedId = null;
+
+  function renderCatalogue() {
+    const d = dict();
+    catalogue.querySelectorAll('.agent').forEach(n => n.remove());
+    (window.AGENTS || AGENTS).forEach(a => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'agent';
+      card.id = a.id;
+      card.dataset.nom = a.name || d.advisor;
+      card.setAttribute('aria-pressed', String(selectedId === a.id));
+      const country = (COUNTRIES[a.country] || {})[LANG] || '';
+      card.innerHTML = `
+        <span class="agent-media">
+          <span class="pending"><span class="mono">C&amp;F</span><span>${d.comingSoon}</span></span>
+          <img src="${a.photo}" alt="" loading="lazy">
+          ${!reduced && a.video ? `<video muted loop playsinline preload="none" poster="${a.photo}"><source src="${a.video}" type="video/mp4"></video>` : ''}
+          <span class="flag" title="${country}" aria-label="${country}">${FLAGS[a.country] || ''}</span>
+        </span>
+        <span class="body">
+          <strong>${a.name || d.advisor}</strong>
+          <span class="zones">${a.zones}</span>
+          <span class="langues">${a.languages}</span>
+          <span class="bio">${(a.bio && a.bio[LANG]) || ''}</span>
+          <span class="tags">${((a.tags && a.tags[LANG]) || []).map(t => `<span>${t}</span>`).join('')}</span>
+        </span>
+        <span class="choose">${d.tourWith}</span>`;
+      const img = card.querySelector('img');
+      img.onerror = () => img.remove(); // le cadre « coming soon » reste dessous
+      const vid = card.querySelector('video');
+      if (vid) {
+        vid.querySelector('source').addEventListener('error', () => vid.remove());
+        vid.addEventListener('error', () => vid.remove());
+        const play = () => { vid.play().then(() => vid.setAttribute('data-playing', '')).catch(() => {}); };
+        const stop = () => { vid.pause(); vid.removeAttribute('data-playing'); };
+        if (hoverable) { card.addEventListener('mouseenter', play); card.addEventListener('mouseleave', stop); }
+        else { new IntersectionObserver(([e]) => { e.intersectionRatio > 0.7 ? play() : stop(); }, { threshold: [0, 0.7] }).observe(card); }
+      }
+      card.addEventListener('click', () => select(card, a));
+      catalogue.appendChild(card);
+    });
+    refreshChip();
+  }
+
+  function clearAll() {
+    catalogue.querySelectorAll('.agent').forEach(c => c.setAttribute('aria-pressed', 'false'));
+    noPref.setAttribute('aria-pressed', 'false');
+  }
+  function refreshChip() {
+    const d = dict();
+    if (!selectedId) { agenteField.value = d.noPrefValue; chip.removeAttribute('data-on'); return; }
+    const a = (window.AGENTS || AGENTS).find(x => x.id === selectedId);
+    if (!a) return;
+    const nom = a.name || d.advisor;
+    agenteField.value = `${nom} (${a.zones})`;
+    chipTxt.textContent = `${d.chipPrefix}: ${nom} — ${a.zones}`;
+    chip.setAttribute('data-on', '');
+  }
+  function select(card, a, scroll = true) {
+    const was = card.getAttribute('aria-pressed') === 'true';
+    clearAll();
+    if (was) { selectedId = null; refreshChip(); return; }
+    selectedId = a.id;
+    card.setAttribute('aria-pressed', 'true');
+    refreshChip();
+    if (scroll) document.getElementById('form').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  }
+  document.getElementById('chipClear').addEventListener('click', () => { clearAll(); selectedId = null; refreshChip(); });
+  noPref.addEventListener('click', () => {
+    clearAll(); selectedId = null; refreshChip();
+    noPref.setAttribute('aria-pressed', 'true');
+    document.getElementById('form').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  });
+
+  /* ============ Init (langue + lien profond #agent-xx) ============ */
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  let saved = null; try { saved = localStorage.getItem('cf-lang'); } catch (e) {}
+  const startLang = ['en', 'es', 'fr'].includes(urlLang) ? urlLang : (['en', 'es', 'fr'].includes(saved) ? saved : 'en');
+  if (startLang !== 'en') setLang(startLang); else renderCatalogue();
+
+  const hashId = location.hash.slice(1);
+  if (hashId) {
+    const target = document.getElementById(hashId);
+    const a = (window.AGENTS || AGENTS).find(x => x.id === hashId);
+    if (target && a) {
+      select(target, a, false);
+      target.scrollIntoView({ behavior: 'auto', block: 'center' });
+    }
+  }
+
+  /* Sticky CTA mobile */
+  const formSec = document.getElementById('form'), sticky = document.getElementById('stickyCta');
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) sticky.removeAttribute('data-shown');
+    else sticky.setAttribute('data-shown', '');
+  }).observe(formSec);
+})();
+</script>
+</body>
+</html>

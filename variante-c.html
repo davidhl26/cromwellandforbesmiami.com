@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cromwell &amp; Forbes — Achetez le soleil</title>
+<meta name="description" content="Miami vous attend. Condos face à l'océan, rooftops, art de vivre — et l'équipe de Miami Beach qui vous ouvre les portes. Cromwell & Forbes.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FFF7F0; --paper-2: #FFEFE4;
+    --noir: #1A1512; --noir-soft: #4A423C; --muted: #8C7F75;
+    --sunset: linear-gradient(120deg, #FF5E5B 0%, #E4498B 45%, #FF9F4A 100%);
+    --coral: #FF5E5B; --magenta: #E4498B; --amber: #FF9F4A;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', system-ui, sans-serif; font-weight: 400; background: var(--paper); color: var(--noir); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  ::selection { background: var(--magenta); color: #fff; }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1.3rem clamp(1.25rem, 5vw, 4rem); }
+  .wordmark { font-family: 'Bodoni Moda', serif; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--noir); text-decoration: none; }
+  .wordmark .amp { background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .topbar .phone { color: var(--noir-soft); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
+
+  .hero { padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.25rem, 5vw, 4rem) 0; max-width: 1280px; margin: 0 auto; }
+  .kicker { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: #fff; background: var(--sunset); border-radius: 999px; padding: 0.4rem 1rem; }
+  h1 { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: clamp(3.2rem, 11vw, 8.5rem); line-height: 0.98; letter-spacing: -0.01em; margin-top: 1.4rem; text-wrap: balance; }
+  h1 em { font-style: italic; background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-sub { margin-top: 1.4rem; font-size: clamp(1.02rem, 1.6vw, 1.25rem); color: var(--noir-soft); max-width: 36rem; text-wrap: pretty; }
+
+  .hero-visual { position: relative; margin-top: clamp(1.8rem, 4vw, 3rem); border-radius: 22px; overflow: hidden; box-shadow: 0 40px 90px rgba(228, 73, 139, 0.18); }
+  .hero-visual img, .hero-visual video { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; display: block; }
+  .hero-visual .tag { position: absolute; left: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); background: rgba(255, 247, 240, 0.9); backdrop-filter: blur(12px); border-radius: 999px; padding: 0.65rem 1.3rem; font-size: 0.82rem; font-weight: 500; color: var(--noir); }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; margin-top: 1.8rem; }
+  .btn { display: inline-block; background: var(--noir); color: #fff; border: none; border-radius: 999px; font-family: inherit; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 1rem 2rem; cursor: pointer; text-decoration: none; text-align: center; transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out); }
+  .btn:hover { box-shadow: 0 12px 30px rgba(26,21,18,0.25); }
+  .btn:active { transform: scale(0.97); }
+  .btn.grad { background: var(--sunset); }
+  .btn-ghost { color: var(--noir); text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--magenta); padding-bottom: 0.1rem; }
+
+  .marquee { overflow: hidden; margin-top: clamp(3rem, 7vw, 5rem); border-block: 2px solid var(--noir); padding: 0.9rem 0; background: var(--paper-2); }
+  .marquee-track { display: flex; width: max-content; animation: drift 30s linear infinite; font-family: 'Bodoni Moda', serif; font-style: italic; font-size: clamp(1.3rem, 3vw, 2.1rem); color: var(--noir); white-space: nowrap; }
+  .marquee-track span { padding-right: 3rem; }
+  @keyframes drift { to { transform: translateX(-50%); } }
+
+  section { padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1.25rem, 5vw, 4rem); }
+  .shell { max-width: 1200px; margin: 0 auto; }
+  .stitle { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.02; text-wrap: balance; }
+  .stitle em { font-style: italic; background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .slead { color: var(--noir-soft); max-width: 40rem; margin-top: 1rem; text-wrap: pretty; }
+
+  /* Agentes — couverture magazine */
+  .agents { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); margin-top: 3rem; }
+  .agent { position: relative; border-radius: 20px; overflow: hidden; background: var(--paper-2); box-shadow: 0 30px 70px rgba(26,21,18,0.12); transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out); }
+  .agent:hover { transform: translateY(-8px) rotate(-0.4deg); box-shadow: 0 46px 90px rgba(228,73,139,0.22); }
+  .agent img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: top center; display: block; }
+  .agent .pending { display: none; aspect-ratio: 4 / 5; align-items: center; justify-content: center; flex-direction: column; gap: 0.8rem; background: radial-gradient(circle at 30% 20%, rgba(255,159,74,0.25), transparent 60%), linear-gradient(160deg, var(--paper-2), #F7E3D3); color: var(--muted); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  .agent .pending .mono { width: 88px; height: 88px; border-radius: 50%; background: var(--sunset); display: flex; align-items: center; justify-content: center; font-family: 'Bodoni Moda', serif; font-size: 1.7rem; color: #fff; }
+  .agent.no-photo img { display: none; }
+  .agent.no-photo .pending { display: flex; }
+  .agent .num { position: absolute; top: 1rem; left: 1.2rem; font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 3.2rem; color: #fff; text-shadow: 0 4px 24px rgba(26,21,18,0.5); }
+  .agent figcaption { position: absolute; inset: auto 0 0 0; padding: 2.6rem 1.5rem 1.3rem; background: linear-gradient(to top, rgba(26,21,18,0.85), transparent); color: #fff; }
+  .agent strong { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: 1.6rem; display: block; }
+  .agent span { display: block; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.3rem; background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: #FFD9C4; }
+  .agent em { display: block; font-style: normal; font-size: 0.82rem; opacity: 0.85; margin-top: 0.35rem; }
+
+  /* Mosaïque envie */
+  .mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.9rem, 2vw, 1.5rem); margin-top: 3rem; }
+  .tile { position: relative; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(26,21,18,0.14); }
+  .tile img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; transition: transform 450ms var(--ease-out); }
+  .tile:hover img { transform: scale(1.05); }
+  .tile figcaption { position: absolute; inset: auto 0 0 0; padding: 2rem 1.2rem 1rem; background: linear-gradient(to top, rgba(26,21,18,0.8), transparent); color: #fff; font-family: 'Bodoni Moda', serif; font-size: 1.25rem; font-weight: 600; }
+  .tile.wide { grid-column: span 2; }
+  .tile.wide img { aspect-ratio: auto; height: 100%; }
+
+  .stats { display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 5vw, 4rem); margin-top: 3rem; }
+  .stat b { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: clamp(2rem, 4.5vw, 3.2rem); display: block; line-height: 1; }
+  .stat span { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+  /* Formulaire */
+  .form-wrap { background: var(--noir); color: #fff; border-radius: 26px; padding: clamp(1.8rem, 4vw, 3.2rem); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 4vw, 3.5rem); align-items: center; position: relative; overflow: hidden; }
+  .form-wrap::before { content: ''; position: absolute; top: -40%; right: -20%; width: 70%; aspect-ratio: 1; background: radial-gradient(circle, rgba(228,73,139,0.4), transparent 65%); }
+  .form-wrap h2 { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.05; position: relative; }
+  .form-wrap h2 em { font-style: italic; background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .form-wrap .hint { margin-top: 0.9rem; color: rgba(255,255,255,0.65); font-size: 0.95rem; position: relative; }
+  form { position: relative; }
+  .field { margin-top: 0.9rem; }
+  .field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.3rem; }
+  .field input, .field select { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); border-radius: 10px; color: #fff; font-family: inherit; font-size: 0.95rem; padding: 0.75rem 0.95rem; transition: border-color 150ms ease, background 150ms ease; }
+  .field input::placeholder { color: rgba(255,255,255,0.35); }
+  .field select option { background: var(--noir); }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--amber); background: rgba(255,255,255,0.1); }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  form .btn { width: 100%; margin-top: 1.2rem; }
+  .footnote { margin-top: 0.8rem; font-size: 0.72rem; color: rgba(255,255,255,0.5); text-align: center; }
+  .alt { margin-top: 1rem; text-align: center; font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+  .alt a { color: var(--amber); text-decoration: none; }
+  .hp { position: absolute; left: -9999px; opacity: 0; }
+
+  footer { padding: 2rem clamp(1.25rem, 5vw, 4rem) 2.6rem; text-align: center; font-size: 0.75rem; color: var(--muted); }
+  footer p + p { margin-top: 0.5rem; }
+  footer .eho { letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.66rem; margin-top: 1rem; }
+
+  html.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+  html.js .reveal[data-visible] { opacity: 1; transform: none; }
+
+  .sticky-cta { display: none; }
+  @media (max-width: 900px) {
+    .topbar .phone { display: none; }
+    .agents, .frow, .form-wrap { grid-template-columns: 1fr; }
+    .mosaic { grid-template-columns: 1fr 1fr; }
+    .tile.wide { grid-column: span 2; }
+    .hero-visual img, .hero-visual video { aspect-ratio: 4 / 5; }
+    .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom)); background: rgba(255,247,240,0.92); backdrop-filter: blur(10px); border-top: 1px solid rgba(26,21,18,0.1); transform: translateY(110%); transition: transform 250ms var(--ease-out); }
+    .sticky-cta[data-shown] { transform: none; }
+    .sticky-cta .btn { width: 100%; padding: 0.85rem 1rem; font-size: 0.85rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    html.js .reveal { opacity: 1; transform: none; transition: none; }
+    .hero-visual video { display: none; }
+    .tile img, .tile:hover img { transition: none; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="wordmark" href="#">Cromwell <span class="amp">&amp;</span> Forbes</a>
+  <a class="phone" href="tel:+13059051305">+1 (305) 905-1305</a>
+</nav>
+
+<header class="hero">
+  <span class="kicker">Miami Beach · Immobilier</span>
+  <h1>Achetez <em>le soleil.</em></h1>
+  <p class="hero-sub">Condos face à l'océan, rooftops au coucher du soleil, matins sur Lincoln Road. L'équipe de Cromwell &amp; Forbes vous ouvre les portes de Miami — en français.</p>
+  <div class="cta-row">
+    <a class="btn grad" href="#form">Recevoir ma sélection privée</a>
+    <a class="btn-ghost" href="https://wa.me/13059051305" rel="noopener">ou écrire sur WhatsApp →</a>
+  </div>
+  <div class="hero-visual">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg"><source src="assets/hero-loop.mp4" type="video/mp4"></video>
+    <span class="tag">☀️ 248 jours de soleil par an</span>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>South Beach ✺ Brickell ✺ Fisher Island ✺ Key Biscayne ✺ Coconut Grove ✺ Bal Harbour ✺&nbsp;</span>
+    <span>South Beach ✺ Brickell ✺ Fisher Island ✺ Key Biscayne ✺ Coconut Grove ✺ Bal Harbour ✺&nbsp;</span>
+  </div>
+</div>
+
+<!-- ============ AGENTES ============ -->
+<section>
+  <div class="shell">
+    <h2 class="stitle reveal">Elles vous font <em>visiter.</em></h2>
+    <p class="slead reveal">Deux expertes basées à Miami Beach. Elles parlent votre langue, connaissent chaque immeuble, et négocient comme si c'était pour elles.</p>
+    <div class="agents">
+      <figure class="agent reveal">
+        <img src="assets/agent-1.jpg" alt="Conseillère immobilière — Cromwell &amp; Forbes" loading="lazy" onerror="this.closest('.agent').classList.add('no-photo')">
+        <div class="pending" aria-hidden="true"><span class="mono">01</span>Portrait en retouche</div>
+        <span class="num" aria-hidden="true">01</span>
+        <figcaption><strong>Votre conseillère</strong><span>South Beach · Miami Beach</span><em>English · Українська · Français</em></figcaption>
+      </figure>
+      <figure class="agent reveal">
+        <img src="assets/agent-2.jpg" alt="Conseillère immobilière — Cromwell &amp; Forbes" loading="lazy" onerror="this.closest('.agent').classList.add('no-photo')">
+        <div class="pending" aria-hidden="true"><span class="mono">02</span>Portrait en retouche</div>
+        <span class="num" aria-hidden="true">02</span>
+        <figcaption><strong>Votre conseillère</strong><span>Brickell · Fisher Island</span><em>Français · العربية · English</em></figcaption>
+      </figure>
+    </div>
+    <div class="cta-row" style="justify-content:center; margin-top:2.2rem;"><a class="btn grad" href="equipe.html">Choisir ma conseillère et visiter</a></div>
+  </div>
+</section>
+
+<!-- ============ MOSAÏQUE ENVIE ============ -->
+<section style="padding-top: 0;">
+  <div class="shell">
+    <h2 class="stitle reveal">La vie qui va <em>avec.</em></h2>
+    <div class="mosaic">
+      <figure class="tile reveal"><img src="assets/pool.jpg" alt="Rooftop au coucher du soleil" loading="lazy" onerror="this.closest('.tile').remove()"><figcaption>Les rooftops</figcaption></figure>
+      <figure class="tile reveal"><img src="assets/deco.jpg" alt="Ocean Drive au crépuscule" loading="lazy" onerror="this.closest('.tile').remove()"><figcaption>Ocean Drive</figcaption></figure>
+      <figure class="tile reveal"><img src="assets/lifestyle.jpg" alt="Terrasse au-dessus de Biscayne Bay" loading="lazy" onerror="this.closest('.tile').remove()"><figcaption>Votre terrasse</figcaption></figure>
+      <figure class="tile wide reveal"><img src="assets/penthouse.jpg" alt="Penthouse au crépuscule" loading="lazy" onerror="this.closest('.tile').remove()"><figcaption>Le penthouse</figcaption></figure>
+      <figure class="tile reveal"><img src="assets/skyline.jpg" alt="Skyline de Brickell" loading="lazy" onerror="this.closest('.tile').remove()"><figcaption>Brickell</figcaption></figure>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b>2013</b><span>Licence Floride</span></div>
+      <div class="stat reveal"><b>690</b><span>Lincoln Road, Miami Beach</span></div>
+      <div class="stat reveal"><b>4</b><span>Langues parlées</span></div>
+      <div class="stat reveal"><b>24 h</b><span>Pour vous répondre</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMULAIRE ============ -->
+<section id="form" style="padding-top: 0;">
+  <div class="shell">
+    <div class="form-wrap reveal">
+      <div>
+        <h2>Votre Miami commence <em>ici.</em></h2>
+        <p class="hint">Décrivez votre projet en 60 secondes. Vous recevez une sélection privée de biens — y compris hors marché — sous 24 h ouvrées. Sans engagement.</p>
+      </div>
+      <form name="lead-miami" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="lead-miami">
+        <input type="hidden" name="variante" value="C — vibrante">
+        <p class="hp"><label>Ne pas remplir : <input name="bot-field"></label></p>
+        <div class="field"><label for="f-name">Votre nom</label><input id="f-name" name="nom" type="text" required autocomplete="name" placeholder="Prénom et nom"></div>
+        <div class="frow">
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="vous@exemple.com"></div>
+          <div class="field"><label for="f-phone">Téléphone / WhatsApp</label><input id="f-phone" name="telephone" type="tel" autocomplete="tel" placeholder="+33 6 12 34 56 78"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="f-goal">Votre projet</label>
+            <select id="f-goal" name="projet"><option value="achat">Acheter — résidence</option><option value="invest">Investir — locatif</option><option value="pied-a-terre">Pied-à-terre</option><option value="vente">Vendre un bien</option><option value="location">Louer</option></select></div>
+          <div class="field"><label for="f-budget">Budget</label>
+            <select id="f-budget" name="budget"><option value="<500k">&lt; $500K</option><option value="500k-1m">$500K – $1M</option><option value="1m-3m">$1M – $3M</option><option value=">3m">$3M +</option><option value="nd">À préciser ensemble</option></select></div>
+        </div>
+        <button class="btn grad" type="submit">Recevoir ma sélection</button>
+        <p class="footnote">Vos coordonnées ne sont transmises qu'à Cromwell &amp; Forbes.</p>
+        <p class="alt">Pressé ? <a href="https://wa.me/13059051305" rel="noopener">WhatsApp</a> · <a href="tel:+13059051305">+1 (305) 905-1305</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Cromwell &amp; Forbes, Inc.</strong> — 690 Lincoln Rd, Suite 201, Miami Beach, FL 33139 · +1 (305) 905-1305</p>
+  <p>Agence immobilière licenciée en Floride (Real Estate Corporation, licence CQ1044943 depuis 2013).</p>
+  <p class="eho">Equal Housing Opportunity</p>
+</footer>
+
+<div class="sticky-cta" id="stickyCta"><a class="btn grad" href="#form">Recevoir ma sélection</a></div>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-visible', ''); io.unobserve(e.target); } });
+  }, { rootMargin: '-60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.setAttribute('data-visible', ''));
+}
+const formSec = document.getElementById('form'), sticky = document.getElementById('stickyCta');
+new IntersectionObserver(([e]) => {
+  if (e.isIntersecting) sticky.removeAttribute('data-shown');
+  else if (e.boundingClientRect.top > 0) sticky.setAttribute('data-shown', '');
+  else sticky.removeAttribute('data-shown');
+}).observe(formSec);
+</script>
+</body>
+</html>

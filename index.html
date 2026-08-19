@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miami Luxury Real Estate — Cromwell &amp; Forbes</title>
+<meta name="description" content="Choose the Miami Beach advisor who speaks your language, tell us what you're looking for — we organize the visit. Oceanfront condos, luxury residences, off-market opportunities.">
+<link rel="canonical" href="https://cromwellandforbesmiami.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cromwellandforbesmiami.com/">
+<meta property="og:title" content="Miami Luxury Real Estate — Cromwell &amp; Forbes">
+<meta property="og:description" content="Choose the Miami Beach advisor who speaks your language — a 5-minute call, then your advisor handles the search, the viewings and the negotiation.">
+<meta property="og:image" content="https://cromwellandforbesmiami.com/assets/hero-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink-950: #F7F5F0; --ink-900: #FFFFFF; --ink-800: #FFFFFF;
+    --frost: #142A38; --frost-dim: #47596A; --frost-faint: #7B8A97;
+    --gold: #A9853F; --gold-bright: #C9A45C; --line: rgba(169,133,63,0.28);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', system-ui, sans-serif; font-weight: 300; background: var(--ink-950); color: var(--frost); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+
+  /* ---------- Header / hero ---------- */
+  .hero { position: relative; overflow: hidden; isolation: isolate; border-bottom: 1px solid var(--line); }
+  .hero-media { position: absolute; inset: 0; z-index: -2; background: var(--ink-900) url('assets/hero-poster.jpg') center / cover no-repeat; }
+  .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-veil { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(247,245,240,0.5), rgba(247,245,240,0.2) 30%, rgba(247,245,240,0.92) 75%, var(--ink-950)); }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; padding: 1.2rem clamp(1rem, 4vw, 4rem); }
+  .wordmark { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(0.92rem, 2.5vw, 1.1rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--frost); text-decoration: none; }
+  .wordmark .amp { color: var(--gold); }
+  .topbar-right { display: flex; align-items: center; gap: 0.9rem; }
+  .topbar .phone { color: var(--frost-dim); text-decoration: none; font-size: 0.85rem; }
+  .lang-switch { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .lang-switch button { background: none; border: none; color: var(--frost-faint); font-family: inherit; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; padding: 0.34rem 0.65rem; cursor: pointer; transition: color 150ms ease, background 150ms ease; }
+  .lang-switch button[aria-pressed="true"] { color: #FFFFFF; background: var(--gold); }
+  @media (max-width: 720px) { .topbar .phone { display: none; } }
+
+  /* Titre en haut, court — les agentes juste dessous */
+  .hero-copy { text-align: center; padding: clamp(1.2rem, 3vw, 2.2rem) clamp(1rem, 4vw, 4rem) 0; max-width: 1020px; margin: 0 auto; }
+  .kicker { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold); }
+  /* Une seule ligne sur desktop : taille calibrée pour la phrase entière */
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(1.85rem, 4.4vw, 3.1rem); line-height: 1.08; margin-top: 0.7rem; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .flow { list-style: none; margin: 1.3rem auto 0; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.6rem 0.8rem; }
+  .fstep { display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.72); border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 1.25rem 0.4rem 0.4rem; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  /* Numéro « bijou » : double anneau, bordure en dégradé d'or, chiffre serif en dégradé */
+  .fnum { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid transparent;
+    background: linear-gradient(160deg, #FFFFFF, #F2EADA) padding-box,
+                linear-gradient(140deg, var(--gold-bright), #8A6C3C 70%) border-box;
+    box-shadow: 0 0 0 3px rgba(169,133,63,0.14), 0 4px 14px rgba(20,42,56,0.14), inset 0 1px 6px rgba(201,164,92,0.2);
+    display: flex; align-items: center; justify-content: center; }
+  .fnum i { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 1.55rem; line-height: 1;
+    background: linear-gradient(165deg, #C9A45C, #A9853F 55%, #8C6C2F); -webkit-background-clip: text; background-clip: text; color: transparent;
+    transform: translateY(-1px); }
+  .fstep span:not(.fnum) { font-size: clamp(0.9rem, 1.3vw, 1.02rem); color: var(--frost); white-space: nowrap; }
+  .farrow { color: var(--gold); opacity: 0.7; font-size: 1.05rem; }
+  .flow-note { margin-top: 0.9rem; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(1.05rem, 1.7vw, 1.3rem); color: var(--gold); }
+  @media (max-width: 640px) {
+    .flow { flex-direction: column; gap: 0.55rem; }
+    .farrow { transform: rotate(90deg); font-size: 0.95rem; line-height: 0.6; }
+    .fstep { width: min(100%, 320px); justify-content: flex-start; }
+    .fstep span { white-space: normal; }
+  }
+
+  /* ---------- Agentes dans le header ---------- */
+  .agents-row-wrap { padding: clamp(1.5rem, 3.5vw, 2.4rem) 0 clamp(2rem, 4.5vw, 3rem); }
+  .agents-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.9rem, 2vw, 1.5rem); max-width: 1180px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 4rem); }
+  @media (max-width: 900px) {
+    .agents-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 0.5rem; }
+    .agents-row::-webkit-scrollbar { display: none; }
+    .agents-row .agent-card { flex: 0 0 min(68vw, 300px); scroll-snap-align: center; }
+  }
+  .agent-card { position: relative; display: block; width: 100%; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--ink-800); text-align: left; color: inherit; font: inherit; cursor: pointer; padding: 0; box-shadow: 0 18px 44px rgba(20,42,56,0.14); transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms ease, opacity 400ms var(--ease-out); }
+  .agent-card:hover { transform: translateY(-5px); box-shadow: 0 28px 60px rgba(20,42,56,0.2); }
+  .agent-card:active { transform: scale(0.985); }
+  .agent-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .agent-card[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 24px 55px rgba(20,42,56,0.2); }
+  .agent-card.enter { opacity: 0; transform: translateY(16px); }
+  .agent-media { display: block; position: relative; aspect-ratio: 4 / 5; background: linear-gradient(165deg, var(--ink-800), var(--ink-950)); }
+  .agent-media img, .agent-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .agent-media video { opacity: 0; transition: opacity 300ms ease; }
+  .agent-media video[data-playing] { opacity: 1; }
+  .agent-media .pending { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.6rem; background: radial-gradient(circle at 35% 20%, rgba(200,169,110,0.18), transparent 60%), linear-gradient(165deg, var(--ink-800), var(--ink-950)); color: var(--frost-faint); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .agent-media .pending .mono { width: 58px; height: 58px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
+  .flag { position: absolute; right: 0.6rem; bottom: 0.6rem; width: 32px; height: 24px; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 10px rgba(20,42,56,0.3); border: 1px solid rgba(255,255,255,0.6); }
+  .flag svg { display: block; width: 100%; height: 100%; }
+  .agent-card .cbody { display: block; padding: 0.8rem 1rem 0.55rem; }
+  .agent-card strong { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.16rem; display: block; }
+  .agent-card .zones { display: block; font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 0.2rem; }
+  .agent-card .langs { display: block; font-size: 0.75rem; color: var(--frost-faint); margin-top: 0.28rem; }
+  .agent-card .choose { display: block; margin: 0.55rem 1rem 1rem; text-align: center; background: linear-gradient(140deg, var(--gold-bright), var(--gold)); color: #2E230D; border-radius: 8px; font-weight: 600; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.62rem 0.8rem; transition: box-shadow 160ms var(--ease-out); }
+  .agent-card:hover .choose { box-shadow: 0 8px 20px rgba(169,133,63,0.45); }
+  .agent-card[aria-pressed="true"] .choose { background: #FFFFFF; color: var(--gold); border: 1px solid var(--gold); }
+  .agent-card[aria-pressed="true"] .choose::before { content: '✓ '; }
+
+  .see-more { text-align: center; margin-top: clamp(1.3rem, 3vw, 1.9rem); }
+  .see-more button { background: none; border: 1px solid var(--gold); color: var(--gold-bright); border-radius: 999px; font-family: inherit; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.8rem; cursor: pointer; transition: background 180ms ease, color 180ms ease, transform 160ms var(--ease-out); }
+  .see-more button:hover { background: rgba(200,169,110,0.12); }
+  .see-more button:active { transform: scale(0.97); }
+  .see-more button:disabled { opacity: 0.55; cursor: default; }
+  .see-more button:disabled:hover { background: none; }
+  .see-more button:disabled:active { transform: none; }
+
+  /* ---------- Formulaire ---------- */
+  section { padding: clamp(3rem, 7vw, 5rem) clamp(1rem, 4vw, 4rem); }
+  .shell { max-width: 1140px; margin: 0 auto; }
+  .stitle { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(1.8rem, 4.2vw, 2.8rem); line-height: 1.08; text-align: center; text-wrap: balance; }
+  .slead { text-align: center; color: var(--frost-dim); max-width: 42rem; margin: 0.9rem auto 0; text-wrap: pretty; }
+  .card { max-width: 640px; margin: 2rem auto 0; background: rgba(255,255,255,0.9); border: 1px solid var(--line); border-radius: 16px; padding: clamp(1.4rem, 3vw, 2.2rem); box-shadow: 0 26px 70px rgba(20,42,56,0.14); }
+  .chip { display: none; margin: 0 auto 0.4rem; width: fit-content; max-width: 100%; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.12); border: 1px solid var(--gold); border-radius: 999px; padding: 0.45rem 1rem; font-size: 0.85rem; color: var(--gold); }
+  .chip[data-on] { display: flex; }
+  .chip button { background: none; border: none; color: var(--frost-faint); font-size: 1rem; cursor: pointer; line-height: 1; }
+  .field { margin-top: 1rem; }
+  .field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--frost-faint); margin-bottom: 0.35rem; }
+  .field input, .field select, .field textarea { width: 100%; background: rgba(20,42,56,0.045); border: 1px solid rgba(20,42,56,0.18); border-radius: 8px; color: var(--frost); font-family: inherit; font-size: 0.95rem; font-weight: 300; padding: 0.72rem 0.9rem; transition: border-color 150ms ease; }
+  .field textarea { min-height: 70px; resize: vertical; }
+  .field select option { background: var(--ink-800); }
+  .field :is(input, select, textarea):focus { outline: none; border-color: var(--gold); }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  @media (max-width: 640px) { .frow { grid-template-columns: 1fr; } }
+  .btn { display: block; width: 100%; margin-top: 1.3rem; background: linear-gradient(140deg, var(--gold-bright), var(--gold)); color: #2E230D; border: none; border-radius: 8px; font-family: inherit; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.95rem 1.5rem; cursor: pointer; text-align: center; text-decoration: none; transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out); box-shadow: 0 8px 22px rgba(169,133,63,0.35); }
+  .btn:active { transform: scale(0.97); }
+  .footnote { margin-top: 0.9rem; font-size: 0.72rem; color: var(--frost-faint); text-align: center; }
+  .alt { margin-top: 1rem; text-align: center; font-size: 0.88rem; color: var(--frost-faint); }
+  .alt a { color: var(--gold-bright); text-decoration: none; }
+  .hp { position: absolute; left: -9999px; opacity: 0; }
+
+  .band { background: var(--ink-900); border-block: 1px solid var(--line); }
+  .band-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; max-width: 1140px; margin: 0 auto; }
+  .band img { width: 100%; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(20,42,56,0.16); display: block; }
+  .band h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; text-wrap: balance; }
+  .band p { margin-top: 1rem; color: var(--frost-dim); text-wrap: pretty; }
+  .band a.golink { display: inline-block; margin-top: 1.4rem; color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 0.1rem; }
+  @media (max-width: 900px) { .band-grid { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem clamp(1rem, 4vw, 4rem) 2.6rem; text-align: center; font-size: 0.75rem; color: var(--frost-faint); }
+  footer p + p { margin-top: 0.5rem; }
+  footer .eho { letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.66rem; margin-top: 1rem; }
+
+  html.js .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+  html.js .reveal[data-visible] { opacity: 1; transform: none; }
+
+  .sticky-cta { display: none; }
+  @media (max-width: 720px) {
+    .hero-media video { display: none; }
+    .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom)); background: rgba(247,245,240,0.94); backdrop-filter: blur(10px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform 250ms var(--ease-out); }
+    .sticky-cta[data-shown] { transform: none; }
+    .sticky-cta .btn { margin: 0; padding: 0.8rem 1rem; font-size: 0.85rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-media video, .agent-media video { display: none; }
+    html.js .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .agent-card, .agent-card:hover { transition: none; transform: none; }
+    .agent-card.enter { opacity: 1; transform: none; }
+  }
+</style>
+<script>document.documentElement.classList.add('js')</script>
+<script src="tracking.js" defer></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg"><source src="assets/hero-loop.mp4" type="video/mp4"></video>
+  </div>
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <nav class="topbar">
+    <a class="wordmark" href="#">Cromwell <span class="amp">&amp;</span> Forbes</a>
+    <div class="topbar-right">
+      <a class="phone" href="tel:+13059051305">+1 (305) 905-1305</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Titre en haut -->
+  <div class="hero-copy">
+    <p class="kicker" data-i18n="kicker">Miami Beach — Luxury Real Estate</p>
+    <h1 data-i18n-html="h1">Choose your Miami <em>real estate advisor</em>.</h1>
+    <ol class="flow">
+      <li class="fstep"><span class="fnum"><i>1</i></span><span data-i18n="s1">Choose your advisor</span></li>
+      <li class="farrow" aria-hidden="true">→</li>
+      <li class="fstep"><span class="fnum"><i>2</i></span><span data-i18n="s2">Leave your details</span></li>
+      <li class="farrow" aria-hidden="true">→</li>
+      <li class="fstep"><span class="fnum"><i>3</i></span><span data-i18n="s3">A 5-minute consultation</span></li>
+    </ol>
+    <p class="flow-note" data-i18n="sNote">Your advisor handles the search, the viewings and the negotiation.</p>
+  </div>
+
+  <!-- Les agentes, juste dessous, toujours dans le header -->
+  <div class="agents-row-wrap">
+    <div class="agents-row" id="agentsRow" aria-label="Our advisors"></div>
+    <!-- Bouton « See more agents » visible mais non cliquable (retirer disabled pour le réactiver) -->
+    <p class="see-more" id="seeMoreWrap"><button type="button" id="seeMoreBtn" data-i18n="seeMore" disabled>See more agents</button></p>
+  </div>
+</header>
+
+<!-- ---------- Formulaire ---------- -->
+<section id="form">
+  <div class="shell">
+    <h2 class="stitle reveal" data-i18n="fTitle">Request your consultation</h2>
+    <p class="slead reveal" data-i18n="fLead">Leave your name and number — your advisor will call you back within one business day for a short consultation about your property goals.</p>
+    <div class="card reveal">
+      <div class="chip" id="chip" role="status"><span id="chipTxt"></span><button type="button" id="chipClear" aria-label="Clear selection">✕</button></div>
+      <form name="visite-miami" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="visite-miami">
+        <input type="hidden" name="agente" id="agenteField" value="No preference">
+        <input type="hidden" name="variante" value="accueil-onepage">
+        <input type="hidden" name="langue" id="langField" value="en">
+        <input type="hidden" name="source" id="sourceField" value="direct">
+        <p class="hp"><label>Do not fill: <input name="bot-field"></label></p>
+        <div class="field"><label for="f-name" data-i18n="lName">Your name</label><input id="f-name" name="nom" type="text" required autocomplete="name" placeholder="First and last name" data-i18n-ph="phName"></div>
+        <div class="field"><label for="f-phone" data-i18n="lPhone">Phone / WhatsApp</label><input id="f-phone" name="telephone" type="tel" required autocomplete="tel" placeholder="+1 305 555 0123"></div>
+        <button class="btn" type="submit" data-i18n="cta">Request a call back</button>
+        <p class="footnote" data-i18n="foot">No obligation. Your details are shared only with Cromwell &amp; Forbes.</p>
+        <p class="alt"><span data-i18n="altTxt">Prefer to write?</span> <a href="https://wa.me/13059051305" rel="noopener">WhatsApp</a> · <a href="tel:+13059051305">+1 (305) 905-1305</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Lifestyle ---------- -->
+<section class="band">
+  <div class="band-grid">
+    <img class="reveal" src="assets/penthouse.jpg" alt="Miami penthouse at dusk" loading="lazy" onerror="this.style.display='none'">
+    <div class="reveal">
+      <h2 data-i18n="bTitle">More than an address. A way of life.</h2>
+      <p data-i18n="bP">Sunrise over the Atlantic, coffee on Lincoln Road, dinner in Brickell. Buying in Miami means buying mornings like this — in a market the whole world wants a piece of.</p>
+      <a class="golink" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false;" data-i18n="bCta">Choose my advisor ↑</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Cromwell &amp; Forbes, Inc.</strong> — 690 Lincoln Rd, Suite 201, Miami Beach, FL 33139 · +1 (305) 905-1305</p>
+  <p data-i18n="legal">Licensed Florida real estate corporation (license CQ1044943, since 2013).</p>
+  <p class="eho">Equal Housing Opportunity</p>
+</footer>
+
+<div class="sticky-cta" id="stickyCta"><a class="btn" href="#form" data-i18n="cta2">Request a call back</a></div>
+
+<script src="agents.js"></script>
+<script>
+(function () {
+  /* ============ i18n ============ */
+  const I18N = {
+    es: {
+      kicker: 'Miami Beach — Inmobiliaria de lujo',
+      h1: 'Elige a tu <em>asesor inmobiliario</em> en Miami.',
+      seeMore: 'Ver más asesoras', s1: 'Elige a tu asesor', s2: 'Deja tus datos', s3: 'Consulta de 5 minutos', sNote: 'Tu asesor se encarga de la búsqueda, las visitas y la negociación.',
+      fTitle: 'Solicita tu consulta', fLead: 'Deja tu nombre y tu número — tu asesor te llamará en 1 día hábil para una breve consulta sobre tu proyecto inmobiliario.',
+      chipPrefix: 'Tu asesor', noPrefValue: 'Sin preferencia',
+      lName: 'Tu nombre', phName: 'Nombre y apellido', lPhone: 'Teléfono / WhatsApp',
+      cta: 'Solicitar llamada', cta2: 'Solicitar llamada',
+      foot: 'Sin compromiso. Tus datos solo se comparten con Cromwell & Forbes.', altTxt: '¿Prefieres escribir?',
+      bTitle: 'Más que una dirección. Un estilo de vida.',
+      bP: 'Amanecer sobre el Atlántico, café en Lincoln Road, cena en Brickell. Comprar en Miami es comprar mañanas así — en un mercado que el mundo entero desea.',
+      bCta: 'Elegir a mi asesora ↑',
+      legal: 'Corporación inmobiliaria con licencia de Florida (licencia CQ1044943, desde 2013).',
+      advisor: 'Tu asesor', comingSoon: 'Retrato próximamente', tourWith: 'Elegir a este asesor',
+      docTitle: 'Inmobiliaria de lujo en Miami — Cromwell & Forbes'
+    },
+    fr: {
+      kicker: 'Miami Beach — Immobilier de prestige',
+      h1: 'Choisissez votre <em>conseiller immobilier</em> à Miami.',
+      seeMore: 'Voir plus de conseillers', s1: 'Choisissez votre conseiller', s2: 'Laissez vos coordonnées', s3: 'Consultation de 5 minutes', sNote: 'Votre conseiller se charge de la recherche, des visites et de la négociation.',
+      fTitle: 'Demandez votre consultation', fLead: 'Laissez votre nom et votre numéro — votre conseiller vous rappelle sous 24 h ouvrées pour une courte consultation sur votre projet immobilier.',
+      chipPrefix: 'Votre conseiller', noPrefValue: 'Pas de préférence',
+      lName: 'Votre nom', phName: 'Prénom et nom', lPhone: 'Téléphone / WhatsApp',
+      cta: 'Être rappelé', cta2: 'Être rappelé',
+      foot: 'Sans engagement. Vos coordonnées ne sont transmises qu\'à Cromwell & Forbes.', altTxt: 'Vous préférez écrire ?',
+      bTitle: 'Plus qu\'une adresse. Un art de vivre.',
+      bP: 'Lever de soleil sur l\'Atlantique, café sur Lincoln Road, dîner à Brickell. Acheter à Miami, c\'est acheter des matins comme celui-ci — sur un marché que le monde entier s\'arrache.',
+      bCta: 'Choisir ma conseillère ↑',
+      legal: 'Agence immobilière licenciée en Floride (Real Estate Corporation, licence CQ1044943 depuis 2013).',
+      advisor: 'Votre conseiller', comingSoon: 'Portrait bientôt là', tourWith: 'Choisir ce conseiller',
+      docTitle: 'Immobilier de prestige à Miami — Cromwell & Forbes'
+    }
+  };
+  const EN_CACHE = { advisor: 'Your advisor', comingSoon: 'Portrait coming soon', tourWith: 'Choose this advisor', chipPrefix: 'Your advisor', noPrefValue: 'No preference', docTitle: document.title };
+  document.querySelectorAll('[data-i18n], [data-i18n-html], [data-i18n-ph]').forEach(el => {
+    const k = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.i18nPh;
+    if (!(k in EN_CACHE)) EN_CACHE[k] = el.dataset.i18nPh ? el.placeholder : (el.dataset.i18nHtml ? el.innerHTML : el.textContent);
+  });
+  let LANG = 'en';
+  const dict = () => LANG === 'en' ? EN_CACHE : I18N[LANG];
+
+  function setLang(lang) {
+    LANG = lang;
+    const d = dict();
+    document.querySelectorAll('[data-i18n]').forEach(el => { const v = d[el.dataset.i18n]; if (v != null) el.textContent = v; });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { const v = d[el.dataset.i18nHtml]; if (v != null) el.innerHTML = v; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = d[el.dataset.i18nPh]; if (v != null) el.placeholder = v; });
+    document.documentElement.lang = lang;
+    document.title = d.docTitle || EN_CACHE.docTitle;
+    document.getElementById('langField').value = lang;
+    document.querySelectorAll('.lang-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    try { localStorage.setItem('cf-lang', lang); } catch (e) {}
+    renderAgents();
+  }
+  document.querySelectorAll('.lang-switch button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+  /* ============ Agentes : header + « see more » sur place ============ */
+  const row = document.getElementById('agentsRow');
+  const seeMoreBtn = document.getElementById('seeMoreBtn');
+  const seeMoreWrap = document.getElementById('seeMoreWrap');
+  const chip = document.getElementById('chip'), chipTxt = document.getElementById('chipTxt');
+  const agenteField = document.getElementById('agenteField');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hoverable = matchMedia('(hover: hover)').matches;
+  let expanded = false;
+  let selectedId = null;
+
+  const roster = () => {
+    const all = (window.AGENTS || AGENTS);
+    const featured = all.filter(a => a.featured);
+    const rest = all.filter(a => !a.featured);
+    return expanded ? featured.concat(rest) : featured.slice(0, 4);
+  };
+
+  function buildCard(a, entering) {
+    const d = dict();
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'agent-card' + (entering ? ' enter' : '');
+    card.id = a.id;
+    card.setAttribute('aria-pressed', String(selectedId === a.id));
+    const country = (COUNTRIES[a.country] || {})[LANG] || '';
+    card.innerHTML = `
+      <span class="agent-media">
+        <span class="pending"><span class="mono">C&amp;F</span><span>${d.comingSoon}</span></span>
+        <img src="${a.photo}" alt="" loading="lazy">
+        ${!reduced && a.video ? `<video muted loop playsinline preload="none" poster="${a.photo}"><source src="${a.video}" type="video/mp4"></video>` : ''}
+        <span class="flag" title="${country}" aria-label="${country}">${FLAGS[a.country] || ''}</span>
+      </span>
+      <span class="cbody">
+        <strong>${a.name || d.advisor}</strong>
+        <span class="langs">${a.languages}</span>
+      </span>
+      <span class="choose">${d.tourWith}</span>`;
+    const img = card.querySelector('img');
+    img.onerror = () => img.remove(); // le cadre « coming soon » reste dessous
+    const vid = card.querySelector('video');
+    if (vid) {
+      vid.querySelector('source').addEventListener('error', () => vid.remove());
+      vid.addEventListener('error', () => vid.remove());
+      const play = () => { vid.play().then(() => vid.setAttribute('data-playing', '')).catch(() => {}); };
+      const stop = () => { vid.pause(); vid.removeAttribute('data-playing'); };
+      if (hoverable) { card.addEventListener('mouseenter', play); card.addEventListener('mouseleave', stop); }
+      else { new IntersectionObserver(([e]) => { e.intersectionRatio > 0.7 ? play() : stop(); }, { threshold: [0, 0.7] }).observe(card); }
+    }
+    card.addEventListener('click', () => select(card, a));
+    return card;
+  }
+
+  function renderAgents() {
+    row.innerHTML = '';
+    roster().forEach(a => row.appendChild(buildCard(a, false)));
+    seeMoreWrap.style.display = expanded ? 'none' : '';
+    refreshChip(); // le badge du formulaire suit la langue et la sélection
+  }
+
+  seeMoreBtn.addEventListener('click', () => {
+    if (expanded) return;
+    expanded = true;
+    seeMoreWrap.style.display = 'none';
+    // Ajout sur place, avec une entrée en douceur et en cascade — pas de changement de page
+    const existing = new Set([...row.children].map(c => c.id));
+    roster().forEach((a, i) => {
+      if (existing.has(a.id)) return;
+      const card = buildCard(a, !reduced);
+      row.appendChild(card);
+      if (!reduced) setTimeout(() => card.classList.remove('enter'), 40 + (i % 8) * 90);
+    });
+  });
+
+  /* ============ Sélection → formulaire ============ */
+  function clearPressed() { row.querySelectorAll('.agent-card').forEach(c => c.setAttribute('aria-pressed', 'false')); }
+  function refreshChip() {
+    const d = dict();
+    if (!selectedId) { agenteField.value = d.noPrefValue; chip.removeAttribute('data-on'); return; }
+    const a = (window.AGENTS || AGENTS).find(x => x.id === selectedId);
+    if (!a) return;
+    const nom = a.name || d.advisor;
+    agenteField.value = `${nom} [${a.id}]`;
+    chipTxt.textContent = `${d.chipPrefix}: ${nom}`;
+    chip.setAttribute('data-on', '');
+  }
+  function select(card, a) {
+    const was = card.getAttribute('aria-pressed') === 'true';
+    clearPressed();
+    if (was) { selectedId = null; refreshChip(); return; }
+    selectedId = a.id;
+    card.setAttribute('aria-pressed', 'true');
+    refreshChip();
+    document.getElementById('form').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); // descend vers le formulaire
+  }
+  document.getElementById('chipClear').addEventListener('click', () => { clearPressed(); selectedId = null; refreshChip(); });
+
+  /* ============ Source de campagne (Google Ads / Meta) → champ caché ============ */
+  // utm_* / gclid / fbclid de l'URL d'atterrissage → Netlify Forms + colonne « Source » du Sheet.
+  (function () {
+    const q = new URLSearchParams(location.search);
+    const parts = [];
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(k => {
+      const v = q.get(k); if (v) parts.push(k.replace('utm_', '') + ':' + v.slice(0, 60));
+    });
+    if (q.get('gclid')) parts.push('gclid:' + q.get('gclid').slice(0, 80));
+    if (q.get('fbclid')) parts.push('fbclid:' + q.get('fbclid').slice(0, 80));
+    const src = parts.join(' | ') || (document.referrer ? 'ref:' + document.referrer.slice(0, 80) : 'direct');
+    document.getElementById('sourceField').value = src.slice(0, 250);
+  })();
+
+  /* ============ Lead → Google Sheets + alerte téléphone ============ */
+  // Coller ici l'URL « /exec » du déploiement Apps Script (fichier google-apps-script.gs,
+  // pas à pas dans README.md). Vide = désactivé — Netlify Forms reste le canal principal.
+  const SHEETS_WEBHOOK = '';
+  document.forms['visite-miami'].addEventListener('submit', () => {
+    if (!SHEETS_WEBHOOK) return;
+    try {
+      const body = new URLSearchParams(new FormData(document.forms['visite-miami'])).toString();
+      // keepalive : la requête survit à la navigation vers merci.html ; no-cors : Apps Script ne renvoie pas d'en-têtes CORS
+      fetch(SHEETS_WEBHOOK, { method: 'POST', mode: 'no-cors', keepalive: true,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+    } catch (err) {} // jamais bloquant pour le visiteur
+  });
+
+  /* ============ Init ============ */
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  let saved = null; try { saved = localStorage.getItem('cf-lang'); } catch (e) {}
+  const startLang = ['en', 'es', 'fr'].includes(urlLang) ? urlLang : (['en', 'es', 'fr'].includes(saved) ? saved : 'en');
+  if (startLang !== 'en') setLang(startLang); else renderAgents();
+
+  if (!reduced) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-visible', ''); io.unobserve(e.target); } });
+    }, { rootMargin: '-60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.setAttribute('data-visible', ''));
+  }
+
+  const formSec = document.getElementById('form'), sticky = document.getElementById('stickyCta');
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) sticky.removeAttribute('data-shown');
+    else if (e.boundingClientRect.top > 0) sticky.setAttribute('data-shown', '');
+    else sticky.removeAttribute('data-shown');
+  }).observe(formSec);
+})();
+</script>
+</body>
+</html>

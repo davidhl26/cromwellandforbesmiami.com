@@ -1,0 +1,5 @@
+# Netlify télécharge les médias (CDN Higgsfield) au build — aucun binaire dans le repo.
+# Site statique : pas de framework, pas de bundler.
+[build]
+  command = "bash fetch-assets.sh"
+  publish = "."

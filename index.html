@@ -72,7 +72,7 @@
 
   /* ---------- Agentes dans le header ---------- */
   .agents-row-wrap { padding: clamp(1.5rem, 3.5vw, 2.4rem) 0 clamp(2rem, 4.5vw, 3rem); }
-  .agents-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.9rem, 2vw, 1.5rem); max-width: 1180px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 4rem); }
+  .agents-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(0.9rem, 2vw, 1.5rem); max-width: 1180px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 4rem); }
   @media (max-width: 900px) {
     .agents-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 0.5rem; }
     .agents-row::-webkit-scrollbar { display: none; }
@@ -90,8 +90,6 @@
   .agent-media video[data-playing] { opacity: 1; }
   .agent-media .pending { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.6rem; background: radial-gradient(circle at 35% 20%, rgba(200,169,110,0.18), transparent 60%), linear-gradient(165deg, var(--ink-800), var(--ink-950)); color: var(--frost-faint); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; }
   .agent-media .pending .mono { width: 58px; height: 58px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
-  .flag { position: absolute; right: 0.6rem; bottom: 0.6rem; width: 32px; height: 24px; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 10px rgba(20,42,56,0.3); border: 1px solid rgba(255,255,255,0.6); }
-  .flag svg { display: block; width: 100%; height: 100%; }
   .agent-card .cbody { display: block; padding: 0.8rem 1rem 0.55rem; }
   .agent-card strong { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.16rem; display: block; }
   .agent-card .zones { display: block; font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 0.2rem; }
@@ -105,9 +103,6 @@
   .see-more button { background: none; border: 1px solid var(--gold); color: var(--gold-bright); border-radius: 999px; font-family: inherit; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.8rem; cursor: pointer; transition: background 180ms ease, color 180ms ease, transform 160ms var(--ease-out); }
   .see-more button:hover { background: rgba(200,169,110,0.12); }
   .see-more button:active { transform: scale(0.97); }
-  .see-more button:disabled { opacity: 0.55; cursor: default; }
-  .see-more button:disabled:hover { background: none; }
-  .see-more button:disabled:active { transform: none; }
 
   /* ---------- Formulaire ---------- */
   section { padding: clamp(3rem, 7vw, 5rem) clamp(1rem, 4vw, 4rem); }
@@ -148,6 +143,13 @@
   html.js .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
   html.js .reveal[data-visible] { opacity: 1; transform: none; }
 
+  /* Bouton WhatsApp flottant (conversion) — natif, aucun script externe */
+  .wa-float { position: fixed; right: 1.1rem; bottom: 1.2rem; z-index: 60; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 28px rgba(20,42,56,0.28); transition: transform 180ms var(--ease-out), box-shadow 180ms ease; }
+  .wa-float:hover { transform: scale(1.08); box-shadow: 0 14px 34px rgba(20,42,56,0.34); }
+  .wa-float:active { transform: scale(0.96); }
+  .wa-float svg { width: 30px; height: 30px; display: block; }
+  @media (max-width: 720px) { .wa-float { right: 0.85rem; bottom: calc(4.3rem + env(safe-area-inset-bottom)); width: 54px; height: 54px; } }
+
   .sticky-cta { display: none; }
   @media (max-width: 720px) {
     .hero-media video { display: none; }
@@ -177,7 +179,7 @@
   <nav class="topbar">
     <a class="wordmark" href="#">Cromwell <span class="amp">&amp;</span> Forbes</a>
     <div class="topbar-right">
-      <a class="phone" href="tel:+13059051305">+1 (305) 905-1305</a>
+      <a class="phone" href="tel:+19542283601">+1 (954) 228-3601</a>
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="es" aria-pressed="false">ES</button>
@@ -204,7 +206,7 @@
   <div class="agents-row-wrap">
     <div class="agents-row" id="agentsRow" aria-label="Our advisors"></div>
     <!-- Bouton « See more agents » visible mais non cliquable (retirer disabled pour le réactiver) -->
-    <p class="see-more" id="seeMoreWrap"><button type="button" id="seeMoreBtn" data-i18n="seeMore" disabled>See more agents</button></p>
+    <p class="see-more" id="seeMoreWrap"><button type="button" id="seeMoreBtn" data-i18n="seeMore">See more agents</button></p>
   </div>
 </header>
 
@@ -226,7 +228,7 @@
         <div class="field"><label for="f-phone" data-i18n="lPhone">Phone / WhatsApp</label><input id="f-phone" name="telephone" type="tel" required autocomplete="tel" placeholder="+1 305 555 0123"></div>
         <button class="btn" type="submit" data-i18n="cta">Request a call back</button>
         <p class="footnote" data-i18n="foot">No obligation. Your details are shared only with Cromwell &amp; Forbes.</p>
-        <p class="alt"><span data-i18n="altTxt">Prefer to write?</span> <a href="https://wa.me/13059051305" rel="noopener">WhatsApp</a> · <a href="tel:+13059051305">+1 (305) 905-1305</a></p>
+        <p class="alt"><span data-i18n="altTxt">Prefer to write?</span> <a href="https://wa.me/19542283601" rel="noopener">WhatsApp</a> · <a href="tel:+19542283601">+1 (954) 228-3601</a></p>
       </form>
     </div>
   </div>
@@ -239,17 +241,20 @@
     <div class="reveal">
       <h2 data-i18n="bTitle">More than an address. A way of life.</h2>
       <p data-i18n="bP">Sunrise over the Atlantic, coffee on Lincoln Road, dinner in Brickell. Buying in Miami means buying mornings like this — in a market the whole world wants a piece of.</p>
-      <a class="golink" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false;" data-i18n="bCta">Choose my advisor ↑</a>
+      <a class="golink" href="#form" data-i18n="bCta">Choose my advisor ↑</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p><strong>Cromwell &amp; Forbes, Inc.</strong> — 690 Lincoln Rd, Suite 201, Miami Beach, FL 33139 · +1 (305) 905-1305</p>
+  <p><strong>Cromwell &amp; Forbes, Inc.</strong> — 690 Lincoln Rd, Suite 201, Miami Beach, FL 33139 · +1 (954) 228-3601</p>
   <p data-i18n="legal">Licensed Florida real estate corporation (license CQ1044943, since 2013).</p>
   <p class="eho">Equal Housing Opportunity</p>
 </footer>
 
+<a class="wa-float" id="waFloat" href="https://wa.me/19542283601" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="#FFFFFF" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
 <div class="sticky-cta" id="stickyCta"><a class="btn" href="#form" data-i18n="cta2">Request a call back</a></div>
 
 <script src="agents.js"></script>
@@ -317,6 +322,20 @@
   const row = document.getElementById('agentsRow');
   const seeMoreBtn = document.getElementById('seeMoreBtn');
   const seeMoreWrap = document.getElementById('seeMoreWrap');
+
+  /* Bulle WhatsApp : message pré-rempli dans la langue du visiteur + événement de conversion */
+  const WA_MSG = {
+    en: "Hello Cromwell & Forbes — I'd like to book my 5-minute consultation.",
+    es: 'Hola Cromwell & Forbes — quisiera agendar mi consulta de 5 minutos.',
+    fr: 'Bonjour Cromwell & Forbes — je souhaite réserver ma consultation de 5 minutes.'
+  };
+  const waFloat = document.getElementById('waFloat');
+  waFloat.addEventListener('click', () => {
+    try {
+      if (window.fbq) window.fbq('track', 'Contact');
+      if (window.gtag) window.gtag('event', 'whatsapp_click');
+    } catch (e) {}
+  });
   const chip = document.getElementById('chip'), chipTxt = document.getElementById('chipTxt');
   const agenteField = document.getElementById('agenteField');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -338,13 +357,11 @@
     card.className = 'agent-card' + (entering ? ' enter' : '');
     card.id = a.id;
     card.setAttribute('aria-pressed', String(selectedId === a.id));
-    const country = (COUNTRIES[a.country] || {})[LANG] || '';
     card.innerHTML = `
       <span class="agent-media">
         <span class="pending"><span class="mono">C&amp;F</span><span>${d.comingSoon}</span></span>
         <img src="${a.photo}" alt="" loading="lazy">
         ${!reduced && a.video ? `<video muted loop playsinline preload="none" poster="${a.photo}"><source src="${a.video}" type="video/mp4"></video>` : ''}
-        <span class="flag" title="${country}" aria-label="${country}">${FLAGS[a.country] || ''}</span>
       </span>
       <span class="cbody">
         <strong>${a.name || d.advisor}</strong>
@@ -370,21 +387,13 @@
     row.innerHTML = '';
     roster().forEach(a => row.appendChild(buildCard(a, false)));
     seeMoreWrap.style.display = expanded ? 'none' : '';
+    waFloat.href = 'https://wa.me/19542283601?text=' + encodeURIComponent(WA_MSG[LANG] || WA_MSG.en);
     refreshChip(); // le badge du formulaire suit la langue et la sélection
   }
 
+  // Demande de David (19/08) : le bouton ne déplie plus le catalogue — il descend au formulaire.
   seeMoreBtn.addEventListener('click', () => {
-    if (expanded) return;
-    expanded = true;
-    seeMoreWrap.style.display = 'none';
-    // Ajout sur place, avec une entrée en douceur et en cascade — pas de changement de page
-    const existing = new Set([...row.children].map(c => c.id));
-    roster().forEach((a, i) => {
-      if (existing.has(a.id)) return;
-      const card = buildCard(a, !reduced);
-      row.appendChild(card);
-      if (!reduced) setTimeout(() => card.classList.remove('enter'), 40 + (i % 8) * 90);
-    });
+    document.getElementById('form').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
   });
 
   /* ============ Sélection → formulaire ============ */

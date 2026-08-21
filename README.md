@@ -154,5 +154,5 @@ Dès que les photos sont déposées dans le widget Higgsfield : retouche glamour
 ## À vérifier avant mise en ligne
 
 1. Noms + langues réelles des deux agentes (placeholders actuels : langues supposées).
-2. WhatsApp actif sur +1 (305) 905-1305 ?
+2. WhatsApp actif sur +1 (954) 228-3601 ?
 3. Relecture par Laurent (sa marque, sa licence CQ1044943).

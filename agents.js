@@ -6,7 +6,8 @@
    - photo manquante  → cadre « portrait coming soon » élégant
    - vidéo manquante  → la photo seule, rien ne casse
    - featured: true   → apparaît dans le header (4 max affichées)
-   - country          → drapeau en bas à droite de la photo
+   - country          → nationalité (les drapeaux ne sont plus affichés
+                        sur les cartes — demande de David, 19/08)
    ============================================================ */
 
 const AGENTS = [
@@ -28,12 +29,12 @@ const AGENTS = [
   },
   {
     id: "agent-ma",
-    name: "",                       // ← l'agente marocaine (photo tenue bleue → assets/agent-ma.jpg)
+    name: "Nicole Perel",
     photo: "assets/agent-ma.jpg",
     video: "assets/agent-ma.mp4",
     country: "ma",
     zones: "Brickell · Fisher Island",
-    languages: "Français · العربية · English",
+    languages: "English · Русский",
     tags: { en: ["Luxury residences", "Pied-à-terre"], es: ["Residencias de lujo", "Pied-à-terre"], fr: ["Résidences de prestige", "Pied-à-terre"] },
     bio: {
       en: "From the first WhatsApp message to the keys in your hand.",
@@ -60,12 +61,12 @@ const AGENTS = [
   },
   {
     id: "agent-il",
-    name: "",
+    name: "Orian Levy",
     photo: "assets/agent-il.jpg",
     video: "assets/agent-il.mp4",
     country: "il",
     zones: "Sunny Isles · Aventura",
-    languages: "עברית · English",
+    languages: "English · עברית",
     tags: { en: ["Beachfront towers", "Rental income"], es: ["Torres frente al mar", "Renta"], fr: ["Tours face mer", "Locatif"] },
     bio: {
       en: "Aventura and Sunny Isles, like a local — because she is one.",
@@ -106,23 +107,9 @@ const AGENTS = [
     },
     featured: false
   },
-  {
-    id: "agent-ua",
-    name: "",                       // ← l'agente ukrainienne (photo blazer noir → assets/agent-ua.jpg)
-    photo: "assets/agent-ua.jpg",
-    video: "assets/agent-ua.mp4",
-    country: "ua",
-    zones: "South Beach · Miami Beach",
-    languages: "English · Українська",
-    tags: { en: ["Oceanfront condos", "Rental investment"], es: ["Condos frente al mar", "Inversión"], fr: ["Condos face mer", "Investissement locatif"] },
-    bio: {
-      en: "She knows every building from Ocean Drive to Bal Harbour.",
-      es: "Conoce cada edificio de Ocean Drive a Bal Harbour.",
-      fr: "Elle connaît chaque immeuble d'Ocean Drive à Bal Harbour."
-    },
-    featured: true
-  }
 ];
+/* Agente ukrainienne (agent-ua) retirée le 19/08 à la demande de David —
+   bloc récupérable dans l'historique git si besoin. */
 
 /* Noms des pays par langue (affichés au survol du drapeau) */
 const COUNTRIES = {

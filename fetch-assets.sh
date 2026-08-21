@@ -25,6 +25,7 @@ fetch skyline.jpg     "$CDN/hf_20260817_223449_38ce7dd0-8190-411c-9c11-0835009e1
 fetch agent-fr.jpg "$CDN/hf_20260819_072634_ff11cf70-bcf0-4b5b-9828-138e3d5173e7.png"  # Laurent Benzaquen (v. GPT 4K écartée : …3e3a23eb)
 fetch agent-ma.jpg "$CDN/hf_20260819_074629_be0ee3cf-3ac2-4db6-b889-8dbac1166d43.png"  # (v. GPT 4K écartée : …a492af36)
 fetch agent-il.jpg "$CDN/hf_20260819_072634_a5407b03-441c-484f-bcab-bbe4d3a3d5ad.png"  # (v. GPT 4K écartée : …5bc109f8)
-fetch agent-ua.jpg "$CDN/hf_20260819_072634_81bd96c5-7527-4b18-a19a-6dc82907628b.png"  # (v. GPT 4K écartée : …6d4a0aa6)
+# agent-ua retirée du roster (19/08) — décommenter pour la réintégrer
+# fetch agent-ua.jpg "$CDN/hf_20260819_072634_81bd96c5-7527-4b18-a19a-6dc82907628b.png"  # (v. GPT 4K écartée : …6d4a0aa6)
 
 echo "Terminé. Le site est prêt à déployer (racine du repo)."

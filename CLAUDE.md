@@ -28,10 +28,14 @@ ligne discrète, sans en faire une boucle d'approbation.
 ## État (19/08/2026)
 
 - One-page trilingue EN/ES/FR : hero skyline Brickell (poster GPT Image 4K +
-  boucle vidéo Seedance 1080p sans couture), 4 agents vedettes (clic =
-  présélection + scroll formulaire), drapeaux officiels flag-icons inlinés,
-  bouton « See more agents » visible mais `disabled` (retirer l'attribut pour
-  le réactiver), formulaire nom + téléphone (Netlify Forms `visite-miami`).
+  boucle vidéo Seedance 1080p sans couture), 3 agents vedettes — Laurent
+  Benzaquen, Nicole Perel (English · Русский), Orian Levy (English · עברית) —
+  clic = présélection + scroll formulaire. Drapeaux retirés des cartes,
+  agent-ua retirée du roster (19/08, récupérable dans git). « See more
+  agents » et le lien bas de page mènent au formulaire. Formulaire nom +
+  téléphone (Netlify Forms `visite-miami`). Bouton WhatsApp flottant natif
+  (+1 954 228-3601, message pré-rempli par langue, event Contact/gtag).
+  Numéro de contact partout : +1 (954) 228-3601.
 - Leads en double : Netlify Forms + copie fetch keepalive vers Apps Script
   (`SHEETS_WEBHOOK` dans index.html, vide = inactif) → feuille « Leads
   Cromwell & Forbes » (Drive de David) + alerte < 1 s (ntfy / WhatsApp
@@ -42,8 +46,10 @@ ligne discrète, sans en faire une boucle d'approbation.
   Sheet) ; `tracking.js` (Google Ads + Meta Pixel) inerte tant que les
   identifiants sont vides ; conversion « Lead » sur merci.html ; canonical +
   Open Graph sur le domaine.
+- Site EN LIGNE sur cromwellandforbesmiami.com (Netlify branché sur ce repo,
+  domaine acheté chez Squarespace, DNS A/CNAME posés — 19/08).
 - En attente de David : déploiement du script Apps Script (~3 min, README),
-  achat du domaine, prénoms des agentes `agent-ma`/`agent-il`/`agent-ua`
-  (agents.js), photos Colombie/Italie/Chine, vidéos de survol optionnelles.
+  photos Colombie/Italie/Chine, vidéos de survol optionnelles, identifiants
+  Google Ads / Meta Pixel pour tracking.js.
 - Historique complet du développement : repo `site-web-callbot.ai`, branche
   `claude/squeeze-page-miami-real-estate-bt8y1n`.

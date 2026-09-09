@@ -300,6 +300,44 @@
     const k = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.i18nPh;
     if (!(k in EN_CACHE)) EN_CACHE[k] = el.dataset.i18nPh ? el.placeholder : (el.dataset.i18nHtml ? el.innerHTML : el.textContent);
   });
+  /* ============ Variantes de campagne (?c=ny / ?c=paris) ============
+     L'annonce et la page racontent la même histoire (message match).
+     Une variante surcharge quelques textes par langue ; tout le reste
+     (agents, formulaire, traçage Source) est identique. */
+  const CAMPAIGNS = {
+    ny: {
+      en: {
+        kicker: 'New York \u2192 Miami Beach',
+        h1: 'Your Miami home, handled <em>from New York</em>.',
+        sNote: 'Video tours, negotiation, closing \u2014 handled while you stay in New York. Fly in for the keys.',
+        fLead: 'Leave your name and number \u2014 your Miami Beach advisor calls you back within minutes, wherever you are.',
+        bP: 'Winter at 75\u00b0F, no state income tax, and a market the whole world wants a piece of. Your New York dollars go further here.',
+        docTitle: 'Miami Real Estate for New Yorkers \u2014 Cromwell & Forbes'
+      }
+    },
+    paris: {
+      en: {
+        kicker: 'Paris \u2192 Miami',
+        h1: 'Invest in Miami, <em>from Paris</em>.',
+        sNote: 'Your French-speaking advisor handles everything on the ground \u2014 you sign from Paris.'
+      },
+      fr: {
+        kicker: 'Paris \u2192 Miami',
+        h1: 'Investir \u00e0 Miami, <em>depuis Paris</em>.',
+        sNote: 'Votre conseiller francophone g\u00e8re tout sur place : recherche, visites en vid\u00e9o, n\u00e9gociation, closing. Vous signez depuis Paris.',
+        fLead: 'Laissez votre nom et votre num\u00e9ro \u2014 votre conseiller francophone \u00e0 Miami Beach vous rappelle en quelques minutes.',
+        bP: "Des loyers en dollars, un march\u00e9 que le monde entier s'arrache, et un conseiller qui parle votre langue. Miami n'a jamais \u00e9t\u00e9 aussi proche de Paris.",
+        docTitle: 'Immobilier Miami depuis Paris \u2014 Cromwell & Forbes'
+      }
+    }
+  };
+  const CAMP = CAMPAIGNS[new URLSearchParams(location.search).get('c')] || null;
+  if (CAMP) {
+    Object.assign(EN_CACHE, CAMP.en || {});
+    if (CAMP.fr) Object.assign(I18N.fr, CAMP.fr);
+    if (CAMP.es) Object.assign(I18N.es, CAMP.es);
+  }
+
   let LANG = 'en';
   const dict = () => LANG === 'en' ? EN_CACHE : I18N[LANG];
 
@@ -427,6 +465,7 @@
     ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(k => {
       const v = q.get(k); if (v) parts.push(k.replace('utm_', '') + ':' + v.slice(0, 60));
     });
+    if (q.get('c')) parts.unshift('camp:' + q.get('c').slice(0, 20));
     if (q.get('gclid')) parts.push('gclid:' + q.get('gclid').slice(0, 80));
     if (q.get('fbclid')) parts.push('fbclid:' + q.get('fbclid').slice(0, 80));
     const src = parts.join(' | ') || (document.referrer ? 'ref:' + document.referrer.slice(0, 80) : 'direct');
@@ -459,7 +498,7 @@
   const urlLang = new URLSearchParams(location.search).get('lang');
   let saved = null; try { saved = localStorage.getItem('cf-lang'); } catch (e) {}
   const startLang = ['en', 'es', 'fr'].includes(urlLang) ? urlLang : (['en', 'es', 'fr'].includes(saved) ? saved : 'en');
-  if (startLang !== 'en') setLang(startLang); else renderAgents();
+  if (startLang !== 'en' || CAMP) setLang(startLang); else renderAgents();
 
   if (!reduced) {
     const io = new IntersectionObserver(entries => {

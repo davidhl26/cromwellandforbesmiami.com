@@ -129,6 +129,21 @@ complète + l'ancrage Miami, distincte du site vitrine cromwellandforbes.com.
    `?utm_source=meta&utm_campaign=agents-aout`.
    Sans campagne : `direct` ou `ref:<site referent>`.
 
+### Variantes de campagne (message match)
+
+La page s'adapte à la campagne via `?c=` (titre, accroche, textes clés — le reste
+est identique, et `camp:…` apparaît dans la colonne Source du Sheet) :
+
+- **New-Yorkais fortunés** : `https://cromwellandforbesmiami.com/?c=ny`
+  (« Your Miami home, handled from New York. » — achat à distance, 75°F, zéro
+  impôt d'État).
+- **Parisiens investisseurs** : `https://cromwellandforbesmiami.com/?c=paris&lang=fr`
+  (« Investir à Miami, depuis Paris. » — conseiller francophone, signature à
+  distance). Version anglaise : `?c=paris` seul.
+
+Ajouter une campagne = un bloc dans `CAMPAIGNS` (index.html). Toujours ajouter
+les `utm_source`/`utm_campaign` dans l'URL finale des annonces.
+
 ## Catalogue d'agentes (`equipe.html` + `agents.js`)
 
 Page « Choisissez avec qui vous visitez », liée depuis les 3 variantes :

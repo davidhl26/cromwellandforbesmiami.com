@@ -436,7 +436,7 @@
   /* ============ Lead → Google Sheets + alerte téléphone ============ */
   // Coller ici l'URL « /exec » du déploiement Apps Script (fichier google-apps-script.gs,
   // pas à pas dans README.md). Vide = désactivé — Netlify Forms reste le canal principal.
-  const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyoAqAkIkzG3vBZWKeYI6CUjU-uCtc0DwuI8UuuUigJM9SII92B2mSGN5gYWKXzSxjx/exec';
+  const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzmyuKkGbC5I5nkqraHweN21bV9_nynq3-D4rkd6eJcxL5UmivzXfD_kEKNJhoOoKjz/exec'; // testé OK le 09/09/2026 (ligne écrite dans l'onglet Leads)
   document.forms['visite-miami'].addEventListener('submit', () => {
     if (!SHEETS_WEBHOOK) return;
     try {

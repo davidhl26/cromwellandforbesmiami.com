@@ -315,7 +315,19 @@
         docTitle: 'Miami Real Estate for New Yorkers \u2014 Cromwell & Forbes'
       }
     },
+    telaviv: {
+      advisor: 'agent-il',
+      en: {
+        kicker: 'Tel Aviv \u2192 Miami',
+        h1: 'Miami real estate, <em>in Hebrew</em>.',
+        sNote: 'Orian speaks Hebrew and knows Sunny Isles and Aventura building by building \u2014 search, video tours and closing, handled.',
+        fLead: 'Leave your name and number \u2014 Orian calls you back within minutes, in Hebrew or English.',
+        bP: 'Sunny Isles, Aventura, Bal Harbour \u2014 Miami has long been a second home for Israeli buyers. Oceanfront towers, dollar assets, and an advisor who speaks your language.',
+        docTitle: 'Miami Real Estate in Hebrew \u2014 Cromwell & Forbes'
+      }
+    },
     paris: {
+      advisor: 'agent-fr',
       en: {
         kicker: 'Paris \u2192 Miami',
         h1: 'Move to Miami, <em>from Paris</em>.',
@@ -495,6 +507,7 @@
   });
 
   /* ============ Init ============ */
+  if (CAMP && CAMP.advisor) selectedId = CAMP.advisor; // conseiller de la campagne présélectionné
   const urlLang = new URLSearchParams(location.search).get('lang');
   let saved = null; try { saved = localStorage.getItem('cf-lang'); } catch (e) {}
   const startLang = ['en', 'es', 'fr'].includes(urlLang) ? urlLang : (['en', 'es', 'fr'].includes(saved) ? saved : 'en');

@@ -27,7 +27,11 @@ const SHEET_NAME = 'Leads';
 const HEADERS = ['Date (Miami)', 'Nom', 'Téléphone', 'Conseiller(ère)', 'Langue', 'Page', 'Source'];
 
 function doPost(e) {
-  const p = (e && e.parameter) || {};
+  let p = (e && e.parameter) || {};
+  // Accepte aussi un corps JSON (fetch sans en-tête Content-Type — pas de preflight CORS)
+  if (!p.nom && !p.telephone && e && e.postData && e.postData.contents) {
+    try { p = JSON.parse(e.postData.contents) || {}; } catch (err) {}
+  }
   if (p['bot-field']) return json_({ ok: true }); // honeypot rempli = robot, on ignore
 
   const nom    = String(p.nom || '').slice(0, 120).trim();
@@ -47,13 +51,19 @@ function doPost(e) {
   notify_(msg, lead);
   welcome_(lead); // SMS de bienvenue automatique au client (si TWILIO_WELCOME = 1)
 
-  // 2) Puis la ligne dans la feuille — ne doit jamais faire échouer l'alerte
+  // 2) Puis la ligne dans la feuille — ne doit jamais faire échouer l'alerte.
+  // Verrou : envois simultanés sans écrasement. safe_ : un « +1 305… » ou un « = »
+  // en tête de valeur serait interprété comme une formule par Sheets (#ERROR!).
+  const lock = LockService.getScriptLock();
   try {
+    lock.tryLock(10000);
     sheet_().appendRow([
       Utilities.formatDate(new Date(), 'America/New_York', 'yyyy-MM-dd HH:mm:ss'),
-      nom, tel, agente, langue, page, source
+      safe_(nom), safe_(tel), safe_(agente), safe_(langue), safe_(page), safe_(source)
     ]);
-  } catch (err) {}
+  } catch (err) {} finally {
+    try { lock.releaseLock(); } catch (e2) {}
+  }
 
   return json_({ ok: true });
 }
@@ -151,6 +161,12 @@ function welcomeText_(nom, langue) {
   if (langue === 'fr') return 'Bonjour' + n + ', ici Cromwell & Forbes (Miami Beach). Merci pour votre demande — quel est le meilleur moment pour votre appel de 5 minutes ?';
   if (langue === 'es') return 'Hola' + n + ', somos Cromwell & Forbes (Miami Beach). Gracias por su solicitud — ¿cuándo le viene bien su llamada de 5 minutos?';
   return 'Hello' + n + ', this is Cromwell & Forbes (Miami Beach). Thank you for your request — when is a good time for your 5-minute call?';
+}
+
+/* Valeur brute → valeur sûre pour une cellule Sheets (anti-formule) */
+function safe_(v) {
+  v = String(v == null ? '' : v);
+  return /^[=+@\t\r-]/.test(v.charAt(0)) ? "'" + v : v;
 }
 
 /* Numéro saisi → chiffres wa.me / E.164 (10 chiffres = numéro US) */

@@ -5,7 +5,7 @@
    La conversion (« Lead ») se déclenche sur merci.html.
    ============================================================ */
 const TRACKING = {
-  googleAdsId: '',     // ex. 'AW-123456789' — Google Ads → Objectifs → Conversions
+  googleAdsId: 'AW-18408844638', // balise Google Ads (installée 09/09/2026)
   googleConvLabel: '', // ex. 'AbCdEfGhIjK' — étiquette de l'action de conversion « Lead »
   metaPixelId: ''      // ex. '1234567890'  — Meta Events Manager → Pixel
 };

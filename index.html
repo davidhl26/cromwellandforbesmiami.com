@@ -437,14 +437,22 @@
   // Coller ici l'URL « /exec » du déploiement Apps Script (fichier google-apps-script.gs,
   // pas à pas dans README.md). Vide = désactivé — Netlify Forms reste le canal principal.
   const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzmyuKkGbC5I5nkqraHweN21bV9_nynq3-D4rkd6eJcxL5UmivzXfD_kEKNJhoOoKjz/exec'; // testé OK le 09/09/2026 (ligne écrite dans l'onglet Leads)
-  document.forms['visite-miami'].addEventListener('submit', () => {
-    if (!SHEETS_WEBHOOK) return;
+  document.forms['visite-miami'].addEventListener('submit', (ev) => {
+    // On gère l'envoi nous-mêmes : un POST natif vers merci.html (fichier statique)
+    // renvoie 404 tant que la détection « Forms » de Netlify n'est pas activée.
+    ev.preventDefault();
+    const body = new URLSearchParams(new FormData(document.forms['visite-miami'])).toString();
     try {
-      const body = new URLSearchParams(new FormData(document.forms['visite-miami'])).toString();
-      // keepalive : la requête survit à la navigation vers merci.html ; no-cors : Apps Script ne renvoie pas d'en-têtes CORS
-      fetch(SHEETS_WEBHOOK, { method: 'POST', mode: 'no-cors', keepalive: true,
+      // Canal principal : Google Sheets (Apps Script). keepalive : survit à la navigation.
+      if (SHEETS_WEBHOOK) fetch(SHEETS_WEBHOOK, { method: 'POST', mode: 'no-cors', keepalive: true,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
-    } catch (err) {} // jamais bloquant pour le visiteur
+    } catch (err) {}
+    try {
+      // Copie Netlify Forms (archive) — au mieux ; ignorée si la détection n'est pas activée.
+      fetch('/', { method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+    } catch (err) {}
+    window.location.href = 'merci.html';
   });
 
   /* ============ Init ============ */

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Merci — Cromwell &amp; Forbes</title>
+<title>Thank you — Cromwell &amp; Forbes</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,12 +59,41 @@
 <body>
   <div class="card">
     <div class="check">✓</div>
-    <h1>Merci — c'est bien reçu.</h1>
-    <p>Votre demande est entre les mains de l'équipe Cromwell &amp; Forbes à Miami Beach. Vous recevrez une réponse sous 24 h ouvrées, et votre sélection privée suivra.</p>
-    <p>Un projet urgent ? Écrivez-nous directement sur WhatsApp.</p>
-    <a class="btn" href="https://wa.me/19542283601" rel="noopener">WhatsApp — réponse rapide</a>
-    <p class="alt">ou appelez le <a href="tel:+19542283601">+1 (954) 228-3601</a></p>
-    <p class="en">Thank you — your request has been received. The Cromwell &amp; Forbes team will get back to you within one business day.</p>
+    <h1 id="t-title">Thank you — your request is in.</h1>
+    <p id="t-body">The Cromwell &amp; Forbes team in Miami Beach has received your request. Your advisor will call you back shortly.</p>
+    <p id="t-urgent">In a hurry? Write to us directly on WhatsApp.</p>
+    <a class="btn" id="t-btn" href="https://wa.me/19542283601" rel="noopener">WhatsApp — quick reply</a>
+    <p class="alt"><span id="t-or">or call</span> <a href="tel:+19542283601">+1 (954) 228-3601</a></p>
   </div>
+<script>
+(function () {
+  // Même langue que la page d'accueil : ?lang= (posé à la redirection) ou mémoire cf-lang.
+  var L = {
+    fr: { html: 'fr', doc: 'Merci — Cromwell & Forbes',
+      't-title': "Merci — c'est bien reçu.",
+      't-body': "L'équipe Cromwell & Forbes à Miami Beach a bien reçu votre demande. Votre conseiller vous rappelle très vite.",
+      't-urgent': 'Pressé ? Écrivez-nous directement sur WhatsApp.',
+      't-btn': 'WhatsApp — réponse rapide',
+      't-or': 'ou appelez le' },
+    es: { html: 'es', doc: 'Gracias — Cromwell & Forbes',
+      't-title': 'Gracias — solicitud recibida.',
+      't-body': 'El equipo de Cromwell & Forbes en Miami Beach ha recibido su solicitud. Su asesor le llamará muy pronto.',
+      't-urgent': '¿Tiene prisa? Escríbanos directamente por WhatsApp.',
+      't-btn': 'WhatsApp — respuesta rápida',
+      't-or': 'o llame al' }
+  };
+  var lang = null;
+  try { lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('cf-lang'); } catch (e) {}
+  var d = L[lang];
+  if (!d) return; // anglais = version par défaut du HTML
+  document.documentElement.lang = d.html;
+  document.title = d.doc;
+  for (var k in d) {
+    if (k === 'html' || k === 'doc') continue;
+    var n = document.getElementById(k);
+    if (n) n.textContent = d[k];
+  }
+})();
+</script>
 </body>
 </html>

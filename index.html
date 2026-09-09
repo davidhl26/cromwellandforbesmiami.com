@@ -452,7 +452,7 @@
       fetch('/', { method: 'POST', keepalive: true,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
     } catch (err) {}
-    window.location.href = 'merci.html';
+    window.location.href = 'merci.html?lang=' + (LANG || 'en'); // la page Merci suit la langue du visiteur
   });
 
   /* ============ Init ============ */

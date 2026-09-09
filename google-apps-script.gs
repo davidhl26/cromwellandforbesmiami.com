@@ -162,11 +162,12 @@ function waPhone_(tel) {
 }
 
 /* ---------- Feuille des leads (en-têtes créés automatiquement) ----------
-   Onglet « Leads » s'il existe, sinon le premier onglet du classeur. */
+   Onglet « Leads » — créé s'il n'existe pas, sans toucher aux autres onglets
+   du classeur (le script peut donc vivre dans n'importe quelle feuille). */
 function sheet_() {
   const id = PropertiesService.getScriptProperties().getProperty('SHEET_ID'); // optionnel (script non lié)
   const ss = id ? SpreadsheetApp.openById(id) : SpreadsheetApp.getActiveSpreadsheet();
-  const sh = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
+  const sh = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
   if (sh.getLastRow() === 0) sh.appendRow(HEADERS);
   else if (String(sh.getRange(1, HEADERS.length).getValue()) === '') {
     sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]); // complète les en-têtes (ex. colonne Source ajoutée après coup)

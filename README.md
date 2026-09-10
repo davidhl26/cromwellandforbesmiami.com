@@ -134,15 +134,30 @@ complète + l'ancrage Miami, distincte du site vitrine cromwellandforbes.com.
 La page s'adapte à la campagne via `?c=` (titre, accroche, textes clés — le reste
 est identique, et `camp:…` apparaît dans la colonne Source du Sheet) :
 
-- **New-Yorkais fortunés** : `https://cromwellandforbesmiami.com/?c=ny`
+- **Miami — condos** : `/?c=condos` (« Find your Miami condo ») — URL finale des
+  groupes condos de la campagne Miami.
+- **Miami — luxe** : `/?c=luxury` (« Penthouses and waterfront homes ») — groupes
+  penthouses/waterfront.
+- **Miami — maisons** : `/?c=homes` (« Your Miami Beach home »).
+- **New-Yorkais** : `https://cromwellandforbesmiami.com/?c=ny`
   (« Your Miami home, handled from New York. » — achat à distance, 75°F, zéro
   impôt d'État).
-- **Parisiens investisseurs** : `https://cromwellandforbesmiami.com/?c=paris&lang=fr`
-  (« Investir à Miami, depuis Paris. » — conseiller francophone, signature à
-  distance). Version anglaise : `?c=paris` seul.
+- **Parisiens (en attente)** : `/?c=paris&lang=fr` (« S'installer à Miami, depuis
+  Paris. »). **Tel Aviv (en attente)** : `/?c=telaviv`. Landings prêtes, campagnes
+  non lancées (décision du 10/09 : Miami + New York uniquement).
 
 Ajouter une campagne = un bloc dans `CAMPAIGNS` (index.html). Toujours ajouter
 les `utm_source`/`utm_campaign` dans l'URL finale des annonces.
+
+### Restructuration Google Ads (10/09/2026) — dossier `google-ads/`
+
+Structure de compte fondée sur le masterclass Jono Catliff (vidéo transcrite,
+notes dans `google-ads/NOTES-VIDEO.md`) : 2 campagnes Search (« CF - Miami
+Buyers », « CF - New York to Miami »), une intention par groupe d'annonces,
+mots-clés en **expression**, titre 1 = mot-clé épinglé, liste de négatifs
+partagée. Import en 10 min via Google Ads Editor : suivre
+`google-ads/RESTRUCTURE.md` (étape 0 = créer l'action de conversion et coller
+l'étiquette dans `tracking.js` — bloquant).
 
 ## Catalogue d'agentes (`equipe.html` + `agents.js`)
 

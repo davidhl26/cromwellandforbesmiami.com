@@ -214,7 +214,7 @@
 <section id="form">
   <div class="shell">
     <h2 class="stitle reveal" data-i18n="fTitle">Request your consultation</h2>
-    <p class="slead reveal" data-i18n="fLead">Leave your name and number — your advisor will call you back within one business day for a short consultation about your property goals.</p>
+    <p class="slead reveal" data-i18n="fLead">Leave your name and number — your advisor calls you back within minutes during business hours for a short consultation about your property goals.</p>
     <div class="card reveal">
       <div class="chip" id="chip" role="status"><span id="chipTxt"></span><button type="button" id="chipClear" aria-label="Clear selection">✕</button></div>
       <form name="visite-miami" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="bot-field">
@@ -227,7 +227,7 @@
         <div class="field"><label for="f-name" data-i18n="lName">Your name</label><input id="f-name" name="nom" type="text" required autocomplete="name" placeholder="First and last name" data-i18n-ph="phName"></div>
         <div class="field"><label for="f-phone" data-i18n="lPhone">Phone / WhatsApp</label><input id="f-phone" name="telephone" type="tel" required autocomplete="tel" placeholder="+1 305 555 0123"></div>
         <button class="btn" type="submit" data-i18n="cta">Request a call back</button>
-        <p class="footnote" data-i18n="foot">No obligation. Your details are shared only with Cromwell &amp; Forbes.</p>
+        <p class="footnote" data-i18n="foot">No obligation. Your details are shared only with Cromwell &amp; Forbes — a licensed Florida brokerage (CQ1044943).</p>
         <p class="alt"><span data-i18n="altTxt">Prefer to write?</span> <a href="https://wa.me/19542283601" rel="noopener">WhatsApp</a> · <a href="tel:+19542283601">+1 (954) 228-3601</a></p>
       </form>
     </div>
@@ -266,11 +266,11 @@
       kicker: 'Miami Beach — Inmobiliaria de lujo',
       h1: 'Elige a tu <em>asesor inmobiliario</em> en Miami.',
       seeMore: 'Ver más asesoras', s1: 'Elige a tu asesor', s2: 'Deja tus datos', s3: 'Consulta de 5 minutos', sNote: 'Tu asesor se encarga de la búsqueda, las visitas y la negociación.',
-      fTitle: 'Solicita tu consulta', fLead: 'Deja tu nombre y tu número — tu asesor te llamará en 1 día hábil para una breve consulta sobre tu proyecto inmobiliario.',
+      fTitle: 'Solicita tu consulta', fLead: 'Deja tu nombre y tu número — tu asesor te llama en pocos minutos en horario laboral para una breve consulta sobre tu proyecto inmobiliario.',
       chipPrefix: 'Tu asesor', noPrefValue: 'Sin preferencia',
       lName: 'Tu nombre', phName: 'Nombre y apellido', lPhone: 'Teléfono / WhatsApp',
       cta: 'Solicitar llamada', cta2: 'Solicitar llamada',
-      foot: 'Sin compromiso. Tus datos solo se comparten con Cromwell & Forbes.', altTxt: '¿Prefieres escribir?',
+      foot: 'Sin compromiso. Tus datos solo se comparten con Cromwell & Forbes — corredora con licencia de Florida (CQ1044943).', altTxt: '¿Prefieres escribir?',
       bTitle: 'Más que una dirección. Un estilo de vida.',
       bP: 'Amanecer sobre el Atlántico, café en Lincoln Road, cena en Brickell. Comprar en Miami es comprar mañanas así — en un mercado que el mundo entero desea.',
       bCta: 'Elegir a mi asesora ↑',
@@ -282,11 +282,11 @@
       kicker: 'Miami Beach — Immobilier de prestige',
       h1: 'Choisissez votre <em>conseiller immobilier</em> à Miami.',
       seeMore: 'Voir plus de conseillers', s1: 'Choisissez votre conseiller', s2: 'Laissez vos coordonnées', s3: 'Consultation de 5 minutes', sNote: 'Votre conseiller se charge de la recherche, des visites et de la négociation.',
-      fTitle: 'Demandez votre consultation', fLead: 'Laissez votre nom et votre numéro — votre conseiller vous rappelle sous 24 h ouvrées pour une courte consultation sur votre projet immobilier.',
+      fTitle: 'Demandez votre consultation', fLead: 'Laissez votre nom et votre numéro — votre conseiller vous rappelle en quelques minutes aux heures ouvrées pour une courte consultation sur votre projet immobilier.',
       chipPrefix: 'Votre conseiller', noPrefValue: 'Pas de préférence',
       lName: 'Votre nom', phName: 'Prénom et nom', lPhone: 'Téléphone / WhatsApp',
       cta: 'Être rappelé', cta2: 'Être rappelé',
-      foot: 'Sans engagement. Vos coordonnées ne sont transmises qu\'à Cromwell & Forbes.', altTxt: 'Vous préférez écrire ?',
+      foot: 'Sans engagement. Vos coordonnées ne sont transmises qu\'à Cromwell & Forbes — agence licenciée en Floride (CQ1044943).', altTxt: 'Vous préférez écrire ?',
       bTitle: 'Plus qu\'une adresse. Un art de vivre.',
       bP: 'Lever de soleil sur l\'Atlantique, café sur Lincoln Road, dîner à Brickell. Acheter à Miami, c\'est acheter des matins comme celui-ci — sur un marché que le monde entier s\'arrache.',
       bCta: 'Choisir ma conseillère ↑',
@@ -305,6 +305,30 @@
      Une variante surcharge quelques textes par langue ; tout le reste
      (agents, formulaire, traçage Source) est identique. */
   const CAMPAIGNS = {
+    condos: {
+      en: {
+        kicker: 'Miami — Condos For Sale',
+        h1: 'Find your Miami condo, <em>with your own advisor</em>.',
+        sNote: 'Brickell, Miami Beach, Sunny Isles, Bal Harbour — your advisor shortlists, tours and negotiates for you.',
+        docTitle: 'Miami Condos For Sale — Cromwell & Forbes'
+      }
+    },
+    luxury: {
+      en: {
+        kicker: 'Miami — Penthouses & Waterfront',
+        h1: 'Penthouses and waterfront homes, <em>quietly handled</em>.',
+        sNote: 'Off-market and new listings, private tours, discreet negotiation — your advisor handles everything.',
+        docTitle: 'Luxury Miami Real Estate — Cromwell & Forbes'
+      }
+    },
+    homes: {
+      en: {
+        kicker: 'Miami Beach — Homes For Sale',
+        h1: 'Your Miami Beach home, <em>found for you</em>.',
+        sNote: 'Tell us what you are looking for — your advisor handles the search, the viewings and the negotiation.',
+        docTitle: 'Homes For Sale Miami Beach — Cromwell & Forbes'
+      }
+    },
     ny: {
       en: {
         kicker: 'New York \u2192 Miami Beach',

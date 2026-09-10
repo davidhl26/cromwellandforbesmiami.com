@@ -1,0 +1,63 @@
+Shared Set,Keyword,Match Type
+CF - Negatifs universels,rent,Broad
+CF - Negatifs universels,rental,Broad
+CF - Negatifs universels,rentals,Broad
+CF - Negatifs universels,for rent,Phrase
+CF - Negatifs universels,apartments for rent,Phrase
+CF - Negatifs universels,rent to own,Phrase
+CF - Negatifs universels,airbnb,Broad
+CF - Negatifs universels,vacation rental,Phrase
+CF - Negatifs universels,hotel,Broad
+CF - Negatifs universels,motel,Broad
+CF - Negatifs universels,hostel,Broad
+CF - Negatifs universels,cheap,Broad
+CF - Negatifs universels,free,Broad
+CF - Negatifs universels,foreclosure,Broad
+CF - Negatifs universels,foreclosures,Broad
+CF - Negatifs universels,auction,Broad
+CF - Negatifs universels,bank owned,Phrase
+CF - Negatifs universels,short sale,Phrase
+CF - Negatifs universels,zillow,Broad
+CF - Negatifs universels,trulia,Broad
+CF - Negatifs universels,redfin,Broad
+CF - Negatifs universels,realtor com,Phrase
+CF - Negatifs universels,craigslist,Broad
+CF - Negatifs universels,facebook marketplace,Phrase
+CF - Negatifs universels,job,Broad
+CF - Negatifs universels,jobs,Broad
+CF - Negatifs universels,career,Broad
+CF - Negatifs universels,careers,Broad
+CF - Negatifs universels,hiring,Broad
+CF - Negatifs universels,salary,Broad
+CF - Negatifs universels,salaries,Broad
+CF - Negatifs universels,internship,Broad
+CF - Negatifs universels,real estate school,Phrase
+CF - Negatifs universels,real estate license,Phrase
+CF - Negatifs universels,license course,Phrase
+CF - Negatifs universels,certification,Broad
+CF - Negatifs universels,exam,Broad
+CF - Negatifs universels,classes,Broad
+CF - Negatifs universels,course,Broad
+CF - Negatifs universels,tuition,Broad
+CF - Negatifs universels,how to become,Phrase
+CF - Negatifs universels,movers,Broad
+CF - Negatifs universels,moving company,Phrase
+CF - Negatifs universels,moving companies,Phrase
+CF - Negatifs universels,moving boxes,Phrase
+CF - Negatifs universels,moving truck,Phrase
+CF - Negatifs universels,uhaul,Broad
+CF - Negatifs universels,u haul,Phrase
+CF - Negatifs universels,storage,Broad
+CF - Negatifs universels,mortgage calculator,Phrase
+CF - Negatifs universels,refinance,Broad
+CF - Negatifs universels,mortgage rates,Phrase
+CF - Negatifs universels,zestimate,Broad
+CF - Negatifs universels,appraisal,Broad
+CF - Negatifs universels,timeshare,Broad
+CF - Negatifs universels,commercial real estate,Phrase
+CF - Negatifs universels,office space,Phrase
+CF - Negatifs universels,warehouse,Broad
+CF - Negatifs universels,section 8,Phrase
+CF - Negatifs universels,hud,Broad
+CF - Negatifs universels,low income,Phrase
+CF - Negatifs universels,affordable housing,Phrase

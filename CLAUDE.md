@@ -48,6 +48,14 @@ ligne discrète, sans en faire une boucle d'approbation.
   Open Graph sur le domaine.
 - Site EN LIGNE sur cromwellandforbesmiami.com (Netlify branché sur ce repo,
   domaine acheté chez Squarespace, DNS A/CNAME posés — 19/08).
+- Google Ads restructuré méthode Jono Catliff (10/09/2026, dossier
+  `google-ads/`) : notes de la vidéo (transcrite par la session locale de
+  David), 2 campagnes Search **Miami + New York uniquement** (Tel Aviv/Paris
+  en attente), une intention par groupe, expression, épingle unique pos. 1,
+  négatifs partagés, présence-pas-intérêt, CSV Google Ads Editor prêts.
+  Variantes landing `?c=condos|luxury|homes` ajoutées (message match), promesse
+  de rappel « en quelques minutes » (speed to lead). Bloquant : étiquette de
+  conversion à créer (étape 0 de `google-ads/RESTRUCTURE.md`).
 - En attente de David : déploiement du script Apps Script (~3 min, README),
   photos Colombie/Italie/Chine, vidéos de survol optionnelles, identifiants
   Google Ads / Meta Pixel pour tracking.js.

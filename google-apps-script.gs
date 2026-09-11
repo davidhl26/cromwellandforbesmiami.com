@@ -24,7 +24,7 @@
    ============================================================ */
 
 const SHEET_NAME = 'Leads';
-const HEADERS = ['Date (Miami)', 'Nom', 'Téléphone', 'Conseiller(ère)', 'Langue', 'Page', 'Source'];
+const HEADERS = ['Date (Miami)', 'Nom', 'Téléphone', 'E-mail', 'Conseiller(ère)', 'Langue', 'Page', 'Source', 'Qualité'];
 
 function doPost(e) {
   let p = (e && e.parameter) || {};
@@ -36,18 +36,25 @@ function doPost(e) {
 
   const nom    = String(p.nom || '').slice(0, 120).trim();
   const tel    = String(p.telephone || '').slice(0, 60).trim();
+  const email  = String(p.email || '').slice(0, 120).trim().toLowerCase();
   const agente = String(p.agente || 'No preference').slice(0, 120);
   const langue = String(p.langue || '').slice(0, 8);
   const page   = String(p.variante || '').slice(0, 60);
   const source = String(p.source || '').slice(0, 250); // campagne Google Ads / Meta (utm, gclid…)
   if (!nom && !tel) return json_({ ok: false, error: 'empty' });
 
+  // Contrôle qualité serveur : le formulaire valide déjà côté navigateur, mais un
+  // envoi direct (robot, page en cache) peut le contourner. On n'écarte rien —
+  // on marque, pour que David ne rappelle pas une saisie bidon en croyant à un lead.
+  const q = quality_(nom, tel, email);
+
   // 1) L'alerte d'abord — c'est elle qui doit partir dans la seconde
-  const lead = { nom: nom, tel: tel, langue: langue, wa: waPhone_(tel) };
+  const lead = { nom: nom, tel: tel, langue: langue, wa: waPhone_(tel), suspect: q.suspect };
   lead.welcome = welcomeText_(nom, langue);
-  const msg = '🏠 Nouveau lead Cromwell & Forbes\n' + nom + ' — ' + tel +
+  const msg = (q.suspect ? '⚠ Lead douteux (' + q.why + ')\n' : '🏠 Nouveau lead Cromwell & Forbes\n') +
+    nom + ' — ' + tel + (email ? '\n' + email : '') +
     (agente && agente !== 'No preference' ? '\nConseiller(ère) : ' + agente : '') +
-    '\n→ à rappeler dans les 5 minutes';
+    (q.suspect ? '' : '\n→ à rappeler dans les 5 minutes');
   notify_(msg, lead);
   welcome_(lead); // SMS de bienvenue automatique au client (si TWILIO_WELCOME = 1)
 
@@ -59,7 +66,7 @@ function doPost(e) {
     lock.tryLock(10000);
     sheet_().appendRow([
       Utilities.formatDate(new Date(), 'America/New_York', 'yyyy-MM-dd HH:mm:ss'),
-      safe_(nom), safe_(tel), safe_(agente), safe_(langue), safe_(page), safe_(source)
+      safe_(nom), safe_(tel), safe_(email), safe_(agente), safe_(langue), safe_(page), safe_(source), q.label
     ]);
   } catch (err) {} finally {
     try { lock.releaseLock(); } catch (e2) {}
@@ -140,7 +147,7 @@ function notify_(text, lead) {
    Activer : propriété TWILIO_WELCOME = 1 (+ TWILIO_SID/TOKEN/FROM). */
 function welcome_(lead) {
   const P = PropertiesService.getScriptProperties();
-  if (P.getProperty('TWILIO_WELCOME') !== '1' || !lead || !lead.wa) return;
+  if (P.getProperty('TWILIO_WELCOME') !== '1' || !lead || !lead.wa || lead.suspect) return;
   const sid = P.getProperty('TWILIO_SID');
   const tok = P.getProperty('TWILIO_TOKEN');
   const from = P.getProperty('TWILIO_FROM');
@@ -161,6 +168,26 @@ function welcomeText_(nom, langue) {
   if (langue === 'fr') return 'Bonjour' + n + ', ici Cromwell & Forbes (Miami Beach). Merci pour votre demande — quel est le meilleur moment pour votre appel de 5 minutes ?';
   if (langue === 'es') return 'Hola' + n + ', somos Cromwell & Forbes (Miami Beach). Gracias por su solicitud — ¿cuándo le viene bien su llamada de 5 minutos?';
   return 'Hello' + n + ', this is Cromwell & Forbes (Miami Beach). Thank you for your request — when is a good time for your 5-minute call?';
+}
+
+/* ---------- Contrôle qualité d'un lead ----------
+   Motif (11/09/2026) : des saisies inutilisables arrivaient dans la feuille —
+   « vbnm », « 12345678901234567890 », et surtout des numéros sans indicatif
+   pays (un mobile français perd son 0 initial et devient injoignable).
+   Le formulaire impose désormais indicatif + longueur par pays ; ici on
+   revérifie côté serveur et on qualifie la ligne. */
+function quality_(nom, tel, email) {
+  const d = String(tel).replace(/\D/g, '');
+  const why = [];
+  const telKo = d.length < 8 || d.length > 15 || /^(\d)\1+$/.test(d) ||
+    '01234567890'.indexOf(d) >= 0 || '09876543210'.indexOf(d) >= 0;
+  const nomKo = String(nom).trim().split(/\s+/).filter(function (w) { return w.length >= 2; }).length < 2;
+  if (telKo) why.push('téléphone');
+  if (nomKo) why.push('nom');
+  const suspect = telKo || nomKo; // seuls le téléphone et le nom rendent un lead inexploitable
+  if (!email) why.push('sans e-mail');
+  else if (!/^[^\s@,;]+@[^\s@,;]+\.[a-zA-Z]{2,}$/.test(email)) why.push('e-mail');
+  return { suspect: suspect, why: why.join(', '), label: why.length ? '⚠ ' + why.join(', ') : 'OK' };
 }
 
 /* Valeur brute → valeur sûre pour une cellule Sheets (anti-formule) */
@@ -184,11 +211,33 @@ function sheet_() {
   const id = PropertiesService.getScriptProperties().getProperty('SHEET_ID'); // optionnel (script non lié)
   const ss = id ? SpreadsheetApp.openById(id) : SpreadsheetApp.getActiveSpreadsheet();
   const sh = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
-  if (sh.getLastRow() === 0) sh.appendRow(HEADERS);
-  else if (String(sh.getRange(1, HEADERS.length).getValue()) === '') {
-    sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]); // complète les en-têtes (ex. colonne Source ajoutée après coup)
-  }
+  ensureSchema_(sh);
+  // Téléphone et e-mail toujours en TEXTE : sans ça Sheets lit « 0656801422 »
+  // comme un nombre et mange le zéro initial — le numéro devient injoignable.
+  sh.getRange(1, 3, sh.getMaxRows(), 2).setNumberFormat('@');
   return sh;
+}
+
+/* En-têtes attendus, posés sans rien détruire : une colonne manquante est
+   INSÉRÉE à sa place (les données existantes glissent d'une colonne, donc
+   restent alignées), une colonne vide est simplement nommée. Migration
+   automatique de l'ancien schéma en 7 colonnes vers les 9 actuelles. */
+function ensureSchema_(sh) {
+  if (sh.getLastRow() === 0) { sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]); return; }
+  const read = function () {
+    const w = Math.max(sh.getLastColumn(), HEADERS.length);
+    return sh.getRange(1, 1, 1, w).getValues()[0].map(function (v) { return String(v).trim(); });
+  };
+  let head = read();
+  for (let i = 0; i < HEADERS.length; i++) {
+    if (head[i] === HEADERS[i]) continue;
+    if (head[i] === '') sh.getRange(1, i + 1).setValue(HEADERS[i]);
+    else if (head.indexOf(HEADERS[i]) === -1) {
+      sh.insertColumnBefore(i + 1);
+      sh.getRange(1, i + 1).setValue(HEADERS[i]);
+    } else continue; // en-tête présent ailleurs (colonne déplacée à la main) : on ne touche à rien
+    head = read();
+  }
 }
 
 function json_(obj) {

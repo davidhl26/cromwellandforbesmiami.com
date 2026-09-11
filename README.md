@@ -81,9 +81,41 @@ copie vers Google Sheets avec alerte instantanée sur ton téléphone. Installat
 6. Test : ouvrir l'URL `/exec` dans le navigateur → `{ ok:true }` + alerte de test
    sur le téléphone.
 
-Le message reçu : « 🏠 Nouveau lead — Nom — Téléphone — Conseiller(ère) choisi(e) —
-→ à rappeler dans les 5 minutes ». Si `SHEETS_WEBHOOK` reste vide, rien ne change :
-Netlify Forms continue seul.
+Le message reçu : « 🏠 Nouveau lead — Nom — Téléphone — E-mail — Conseiller(ère)
+choisi(e) — → à rappeler dans les 5 minutes ». Si `SHEETS_WEBHOOK` reste vide, rien
+ne change : Netlify Forms continue seul.
+
+### Qualité des leads (11/09/2026) — numéros inutilisables
+
+Deux demandes issues de la campagne sont arrivées avec un numéro injoignable, et
+trois saisies bidon (« vbnm », « 12345678901234567890 ») se sont glissées dans la
+feuille. Trois causes, trois corrections :
+
+1. **Numéro sans indicatif pays.** Un mobile français « 0656801422 » arrive tel
+   quel et n'est pas appelable depuis les États-Unis. Le formulaire a maintenant
+   un **sélecteur de pays** (46 pays, présélectionné d'après le fuseau horaire du
+   visiteur) et contrôle le **nombre de chiffres attendu pour ce pays**. Le champ
+   caché `telephone` part au format international : `+33656801422`.
+2. **Le zéro initial mangé par Sheets.** « 0656801422 » écrit dans une cellule au
+   format nombre devient « 656801422 ». Les colonnes Téléphone et E-mail sont
+   désormais forcées en **texte** par le script.
+3. **Saisies pour saisir.** Nom = prénom **et** nom obligatoires, e-mail
+   **obligatoire** (format vérifié, domaines jetables refusés, fautes de frappe
+   courantes corrigées en un clic : `gmial.com` → `gmail.com`). Rien ne part tant
+   que les trois champs ne tiennent pas. Le script revalide côté serveur — un
+   envoi direct (robot, page en cache) est enregistré mais marqué
+   **⚠ dans la colonne « Qualité »**, et l'alerte téléphone dit « ⚠ Lead douteux »
+   au lieu de « à rappeler dans les 5 minutes » (pas de SMS de bienvenue non plus).
+
+**La feuille passe de 7 à 9 colonnes** : `Date (Miami) · Nom · Téléphone ·
+E-mail · Conseiller(ère) · Langue · Page · Source · Qualité`. La migration est
+automatique au premier lead reçu après mise à jour du script : la colonne E-mail
+est **insérée** en 4ᵉ position (les données existantes glissent, rien n'est
+écrasé) et « Qualité » est ajoutée à la fin.
+
+⚠ **À faire une fois par David** : recoller `google-apps-script.gs` dans Apps
+Script, puis **Déployer → Gérer les déploiements → ✏ → Nouvelle version**
+(l'URL `/exec` ne change pas). Sans ça, la colonne E-mail reste vide.
 
 ### Et le SMS de bienvenue automatique au client ?
 

@@ -36,6 +36,14 @@ ligne discrète, sans en faire une boucle d'approbation.
   téléphone (Netlify Forms `visite-miami`). Bouton WhatsApp flottant natif
   (+1 954 228-3601, message pré-rempli par langue, event Contact/gtag).
   Numéro de contact partout : +1 (954) 228-3601.
+- Formulaire durci (11/09) : nom = prénom + nom, **e-mail obligatoire**
+  (domaines jetables refusés, fautes de frappe suggérées), téléphone avec
+  sélecteur de pays (46 pays, deviné au fuseau) + longueur contrôlée par pays →
+  champ `telephone` envoyé en international (`+33…`). Rien ne part si un champ
+  ne tient pas ; le script revalide et marque la colonne « Qualité ».
+  Feuille passée à 9 colonnes (E-mail insérée, Qualité ajoutée, migration
+  automatique). Téléphone/e-mail forcés en texte (le zéro initial des mobiles
+  européens était mangé par Sheets).
 - Leads en double : Netlify Forms + copie fetch keepalive vers Apps Script
   (`SHEETS_WEBHOOK` dans index.html, vide = inactif) → feuille « Leads
   Cromwell & Forbes » (Drive de David) + alerte < 1 s (ntfy / WhatsApp

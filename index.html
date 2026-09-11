@@ -119,6 +119,15 @@
   .field textarea { min-height: 70px; resize: vertical; }
   .field select option { background: var(--ink-800); }
   .field :is(input, select, textarea):focus { outline: none; border-color: var(--gold); }
+  .phone-row { display: flex; gap: 0.5rem; }
+  .phone-row select { flex: 0 0 9.5rem; min-width: 0; }
+  .phone-row input { flex: 1 1 auto; min-width: 0; }
+  @media (max-width: 380px) { .phone-row { flex-wrap: wrap; } .phone-row select { flex: 1 1 100%; } }
+  .field .err { display: block; margin: 0.35rem 0 0; font-size: 0.78rem; font-weight: 400; line-height: 1.35; color: #B42318; }
+  .field .err[hidden] { display: none; }
+  .field .err button { background: none; border: none; padding: 0; font: inherit; color: #B42318; text-decoration: underline; cursor: pointer; }
+  .field input.bad, .field select.bad { border-color: #B42318; }
+  .field .hint { display: block; margin: 0.3rem 0 0; font-size: 0.72rem; font-weight: 300; color: var(--frost-faint); }
   .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
   @media (max-width: 640px) { .frow { grid-template-columns: 1fr; } }
   .btn { display: block; width: 100%; margin-top: 1.3rem; background: linear-gradient(140deg, var(--gold-bright), var(--gold)); color: #2E230D; border: none; border-radius: 8px; font-family: inherit; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.95rem 1.5rem; cursor: pointer; text-align: center; text-decoration: none; transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out); box-shadow: 0 8px 22px rgba(169,133,63,0.35); }
@@ -224,8 +233,13 @@
         <input type="hidden" name="langue" id="langField" value="en">
         <input type="hidden" name="source" id="sourceField" value="direct">
         <p class="hp"><label>Do not fill: <input name="bot-field"></label></p>
-        <div class="field"><label for="f-name" data-i18n="lName">Your name</label><input id="f-name" name="nom" type="text" required autocomplete="name" placeholder="First and last name" data-i18n-ph="phName"></div>
-        <div class="field"><label for="f-phone" data-i18n="lPhone">Phone / WhatsApp</label><input id="f-phone" name="telephone" type="tel" required autocomplete="tel" placeholder="+1 305 555 0123"></div>
+        <input type="hidden" name="telephone" id="phoneField">
+        <div class="field"><label for="f-name" data-i18n="lName">Your name</label><input id="f-name" name="nom" type="text" required autocomplete="name" placeholder="First and last name" data-i18n-ph="phName"><p class="err" id="e-name" hidden></p></div>
+        <div class="field"><label for="f-phone" data-i18n="lPhone">Phone / WhatsApp</label>
+          <div class="phone-row"><select id="f-cc" aria-label="Country code"></select><input id="f-phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="305 555 0123"></div>
+          <p class="err" id="e-phone" hidden></p>
+          <p class="hint" data-i18n="phoneHint">Your advisor calls this number back — country code included.</p></div>
+        <div class="field"><label for="f-email" data-i18n="lEmail">Email</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" data-i18n-ph="phEmail"><p class="err" id="e-email" hidden></p></div>
         <button class="btn" type="submit" data-i18n="cta">Request a call back</button>
         <p class="footnote" data-i18n="foot">No obligation. Your details are shared only with Cromwell &amp; Forbes — a licensed Florida brokerage (CQ1044943).</p>
         <p class="alt"><span data-i18n="altTxt">Prefer to write?</span> <a href="https://wa.me/19542283601" rel="noopener">WhatsApp</a> · <a href="tel:+19542283601">+1 (954) 228-3601</a></p>
@@ -268,7 +282,7 @@
       seeMore: 'Ver más asesoras', s1: 'Elige a tu asesor', s2: 'Deja tus datos', s3: 'Consulta de 5 minutos', sNote: 'Tu asesor se encarga de la búsqueda, las visitas y la negociación.',
       fTitle: 'Solicita tu consulta', fLead: 'Deja tu nombre y tu número — tu asesor te llama en pocos minutos en horario laboral para una breve consulta sobre tu proyecto inmobiliario.',
       chipPrefix: 'Tu asesor', noPrefValue: 'Sin preferencia',
-      lName: 'Tu nombre', phName: 'Nombre y apellido', lPhone: 'Teléfono / WhatsApp',
+      lName: 'Tu nombre', phName: 'Nombre y apellido', lPhone: 'Teléfono / WhatsApp', lEmail: 'Correo electrónico', phEmail: 'tu@ejemplo.com', phoneHint: 'Tu asesor llama a este número — con el código del país.',
       cta: 'Solicitar llamada', cta2: 'Solicitar llamada',
       foot: 'Sin compromiso. Tus datos solo se comparten con Cromwell & Forbes — corredora con licencia de Florida (CQ1044943).', altTxt: '¿Prefieres escribir?',
       bTitle: 'Más que una dirección. Un estilo de vida.',
@@ -284,7 +298,7 @@
       seeMore: 'Voir plus de conseillers', s1: 'Choisissez votre conseiller', s2: 'Laissez vos coordonnées', s3: 'Consultation de 5 minutes', sNote: 'Votre conseiller se charge de la recherche, des visites et de la négociation.',
       fTitle: 'Demandez votre consultation', fLead: 'Laissez votre nom et votre numéro — votre conseiller vous rappelle en quelques minutes aux heures ouvrées pour une courte consultation sur votre projet immobilier.',
       chipPrefix: 'Votre conseiller', noPrefValue: 'Pas de préférence',
-      lName: 'Votre nom', phName: 'Prénom et nom', lPhone: 'Téléphone / WhatsApp',
+      lName: 'Votre nom', phName: 'Prénom et nom', lPhone: 'Téléphone / WhatsApp', lEmail: 'E-mail', phEmail: 'vous@exemple.com', phoneHint: 'Votre conseiller rappelle ce numéro — indicatif pays compris.',
       cta: 'Être rappelé', cta2: 'Être rappelé',
       foot: 'Sans engagement. Vos coordonnées ne sont transmises qu\'à Cromwell & Forbes — agence licenciée en Floride (CQ1044943).', altTxt: 'Vous préférez écrire ?',
       bTitle: 'Plus qu\'une adresse. Un art de vivre.',
@@ -386,6 +400,7 @@
     document.documentElement.lang = lang;
     document.title = d.docTitle || EN_CACHE.docTitle;
     document.getElementById('langField').value = lang;
+    try { refreshErrors(); } catch (e) {}
     document.querySelectorAll('.lang-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     try { localStorage.setItem('cf-lang', lang); } catch (e) {}
     renderAgents();
@@ -508,6 +523,201 @@
     document.getElementById('sourceField').value = src.slice(0, 250);
   })();
 
+  /* ============ Qualité des leads : téléphone, nom, e-mail ============
+     Constat du 11/09 : des numéros inutilisables arrivaient dans la feuille
+     (saisie sans indicatif pays — un mobile français « 0656801422 » perd son
+     zéro dans Sheets et devient injoignable — et des saisies bidon type
+     « vbnm » / « 12345678901234567890 »). On force donc un numéro complet :
+     indicatif choisi dans une liste + nombre de chiffres attendu par pays.
+     Le champ caché `telephone` part au format international (+33656801422). */
+  const COUNTRIES = [
+    ['US', '1', 'United States', 10, 10], ['CA', '1', 'Canada', 10, 10],
+    ['AE', '971', 'United Arab Emirates', 8, 9], ['AR', '54', 'Argentina', 10, 11],
+    ['AT', '43', 'Austria', 10, 11], ['AU', '61', 'Australia', 9, 9],
+    ['BE', '32', 'Belgium', 8, 9], ['BR', '55', 'Brazil', 10, 11],
+    ['CH', '41', 'Switzerland', 9, 9], ['CL', '56', 'Chile', 8, 9],
+    ['CN', '86', 'China', 11, 11], ['CO', '57', 'Colombia', 10, 10],
+    ['CR', '506', 'Costa Rica', 8, 8], ['DE', '49', 'Germany', 10, 11],
+    ['DK', '45', 'Denmark', 8, 8], ['DO', '1', 'Dominican Republic', 10, 10],
+    ['EC', '593', 'Ecuador', 8, 9], ['EG', '20', 'Egypt', 10, 10],
+    ['ES', '34', 'Spain', 9, 9], ['FR', '33', 'France', 9, 9],
+    ['GB', '44', 'United Kingdom', 9, 10], ['GR', '30', 'Greece', 10, 10],
+    ['GT', '502', 'Guatemala', 8, 8], ['HT', '509', 'Haiti', 8, 8],
+    ['IE', '353', 'Ireland', 7, 9], ['IL', '972', 'Israel', 8, 9],
+    ['IN', '91', 'India', 10, 10], ['IT', '39', 'Italy', 9, 11],
+    ['LB', '961', 'Lebanon', 7, 8], ['MA', '212', 'Morocco', 9, 9],
+    ['MX', '52', 'Mexico', 10, 10], ['NL', '31', 'Netherlands', 9, 9],
+    ['NO', '47', 'Norway', 8, 8], ['PA', '507', 'Panama', 7, 8],
+    ['PE', '51', 'Peru', 8, 9], ['PL', '48', 'Poland', 9, 9],
+    ['PT', '351', 'Portugal', 9, 9], ['QA', '974', 'Qatar', 8, 8],
+    ['RU', '7', 'Russia', 10, 10], ['SA', '966', 'Saudi Arabia', 9, 9],
+    ['SE', '46', 'Sweden', 7, 9], ['TR', '90', 'Turkey', 10, 10],
+    ['UA', '380', 'Ukraine', 9, 9], ['UY', '598', 'Uruguay', 8, 8],
+    ['VE', '58', 'Venezuela', 10, 10], ['ZA', '27', 'South Africa', 9, 9]
+  ];
+  const TZ_COUNTRY = {
+    'Europe/Paris': 'FR', 'Europe/Brussels': 'BE', 'Europe/Zurich': 'CH', 'Europe/Madrid': 'ES',
+    'Europe/Lisbon': 'PT', 'Europe/London': 'GB', 'Europe/Dublin': 'IE', 'Europe/Rome': 'IT',
+    'Europe/Berlin': 'DE', 'Europe/Vienna': 'AT', 'Europe/Amsterdam': 'NL', 'Europe/Stockholm': 'SE',
+    'Europe/Oslo': 'NO', 'Europe/Copenhagen': 'DK', 'Europe/Warsaw': 'PL', 'Europe/Athens': 'GR',
+    'Europe/Istanbul': 'TR', 'Europe/Moscow': 'RU', 'Europe/Kiev': 'UA', 'Europe/Kyiv': 'UA',
+    'Asia/Jerusalem': 'IL', 'Asia/Tel_Aviv': 'IL', 'Asia/Beirut': 'LB', 'Asia/Dubai': 'AE',
+    'Asia/Riyadh': 'SA', 'Asia/Qatar': 'QA', 'Asia/Shanghai': 'CN', 'Asia/Kolkata': 'IN',
+    'Africa/Casablanca': 'MA', 'Africa/Cairo': 'EG', 'Africa/Johannesburg': 'ZA',
+    'America/Toronto': 'CA', 'America/Montreal': 'CA', 'America/Vancouver': 'CA',
+    'America/Mexico_City': 'MX', 'America/Bogota': 'CO', 'America/Sao_Paulo': 'BR',
+    'America/Argentina/Buenos_Aires': 'AR', 'America/Santiago': 'CL', 'America/Lima': 'PE',
+    'America/Caracas': 'VE', 'America/Panama': 'PA', 'America/Guayaquil': 'EC',
+    'America/Santo_Domingo': 'DO', 'America/Port-au-Prince': 'HT', 'America/Guatemala': 'GT',
+    'America/Costa_Rica': 'CR', 'America/Montevideo': 'UY', 'Australia/Sydney': 'AU'
+  };
+  const MSG = {
+    en: {
+      name: 'Please enter your first and last name.',
+      phone: 'Please enter your phone number.',
+      phoneLen: 'This number looks incomplete: {n} digits expected for {c}.',
+      phoneOdd: 'This number does not look real. Please check it.',
+      email: 'Please enter a valid email address.',
+      emailFake: 'Please use the email address you actually read.',
+      typo: 'Did you mean {s}?', typoFix: 'Yes, fix it'
+    },
+    es: {
+      name: 'Escribe tu nombre y tu apellido.',
+      phone: 'Escribe tu número de teléfono.',
+      phoneLen: 'Este número parece incompleto: se esperan {n} dígitos para {c}.',
+      phoneOdd: 'Este número no parece real. Por favor revísalo.',
+      email: 'Escribe un correo electrónico válido.',
+      emailFake: 'Usa el correo que realmente consultas.',
+      typo: '¿Querías decir {s}?', typoFix: 'Sí, corregir'
+    },
+    fr: {
+      name: 'Indiquez votre prénom et votre nom.',
+      phone: 'Indiquez votre numéro de téléphone.',
+      phoneLen: 'Ce numéro semble incomplet : {n} chiffres attendus pour {c}.',
+      phoneOdd: 'Ce numéro ne semble pas réel. Merci de le vérifier.',
+      email: 'Indiquez une adresse e-mail valide.',
+      emailFake: 'Utilisez l\'adresse e-mail que vous consultez vraiment.',
+      typo: 'Vouliez-vous dire {s} ?', typoFix: 'Oui, corriger'
+    }
+  };
+  const msg = (k) => (MSG[LANG] || MSG.en)[k];
+
+  const ccSel = document.getElementById('f-cc');
+  const fName = document.getElementById('f-name');
+  const fPhone = document.getElementById('f-phone');
+  const fEmail = document.getElementById('f-email');
+  const phoneField = document.getElementById('phoneField');
+
+  COUNTRIES.forEach(([code, dial, name]) => {
+    const o = document.createElement('option');
+    o.value = code; o.dataset.dial = dial; o.textContent = name + ' +' + dial;
+    ccSel.appendChild(o);
+  });
+  (function pickCountry() {
+    let guess = 'US';
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (tz && TZ_COUNTRY[tz]) guess = TZ_COUNTRY[tz];
+    } catch (e) {}
+    ccSel.value = guess;
+  })();
+  const country = () => COUNTRIES.find(c => c[0] === ccSel.value) || COUNTRIES[0];
+  const EXAMPLES = { US: '305 555 0123', CA: '514 555 0123', FR: '6 12 34 56 78', IL: '50 123 4567',
+    MA: '6 12 34 56 78', RU: '912 345 67 89', ES: '612 34 56 78', GB: '7400 123456', BR: '11 91234 5678',
+    MX: '55 1234 5678', CO: '310 1234567', IT: '312 345 6789', BE: '470 12 34 56', CH: '78 123 45 67' };
+  function syncPlaceholder() {
+    const [code, , , min] = country();
+    fPhone.placeholder = EXAMPLES[code] || '1'.padEnd(min, '2').replace(/(\d{3})(?=\d)/g, '$1 ');
+  }
+  /* Les messages d'erreur déjà affichés suivent la langue (appelé par setLang). */
+  function refreshErrors() {
+    syncPlaceholder();
+    if (fName.dataset.touched || fPhone.dataset.touched || fEmail.dataset.touched) validate(true);
+  }
+
+  function showErr(input, slotId, text) {
+    const slot = document.getElementById(slotId);
+    if (!text) { slot.hidden = true; slot.textContent = ''; input.classList.remove('bad'); input.removeAttribute('aria-invalid'); return true; }
+    slot.hidden = false; slot.textContent = text; input.classList.add('bad'); input.setAttribute('aria-invalid', 'true');
+    return false;
+  }
+
+  /* --- Nom : prénom + nom, deux mots d'au moins deux caractères --- */
+  function checkName(quiet) {
+    const v = fName.value.trim().replace(/\s+/g, ' ');
+    const words = v.split(' ').filter(w => w.length >= 2);
+    const ok = v.length >= 4 && words.length >= 2 && /[a-zà-öø-ÿа-яא-ת؀-ۿ]{2}/i.test(v) && !/(.)\1{3,}/.test(v);
+    if (ok) fName.value = v;
+    return quiet && !fName.dataset.touched ? ok : showErr(fName, 'e-name', ok ? '' : msg('name'));
+  }
+
+  /* --- Téléphone : indicatif + nombre de chiffres attendu par pays --- */
+  function nationalDigits() {
+    let d = fPhone.value.replace(/\D/g, '');
+    const [code, dial] = country();
+    if (d.startsWith('00' + dial)) d = d.slice(2 + dial.length);        // 0033 6 …
+    else if (d.startsWith(dial) && d.length > country()[3]) d = d.slice(dial.length);
+    if (code !== 'IT') d = d.replace(/^0+/, '');                        // 0 de service (l'Italie le garde)
+    return d;
+  }
+  function checkPhone(quiet) {
+    const [code, dial, name, min, max] = country();
+    const d = nationalDigits();
+    let err = '';
+    if (!d) err = msg('phone');
+    else if (d.length < min || d.length > max) err = msg('phoneLen').replace('{n}', min === max ? min : min + '–' + max).replace('{c}', name);
+    else if (/^(\d)\1+$/.test(d) || '01234567890'.indexOf(d) >= 0 || '09876543210'.indexOf(d) >= 0) err = msg('phoneOdd');
+    if (!err) phoneField.value = '+' + dial + d;
+    return quiet && !fPhone.dataset.touched ? !err : showErr(fPhone, 'e-phone', err);
+  }
+
+  /* --- E-mail : format, domaines jetables, fautes de frappe courantes --- */
+  const FAKE_DOMAINS = ['test.com', 'test.fr', 'example.com', 'mailinator.com', 'yopmail.com', 'tempmail.com',
+    'guerrillamail.com', '10minutemail.com', 'trashmail.com', 'sharklasers.com', 'throwawaymail.com', 'a.com', 'aa.com'];
+  const TYPOS = { 'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gmail.co': 'gmail.com',
+    'gmail.fr': 'gmail.com', 'gmailcom': 'gmail.com', 'gnail.com': 'gmail.com', 'hotmial.com': 'hotmail.com',
+    'hotmai.com': 'hotmail.com', 'hotmail.co': 'hotmail.com', 'hotmal.com': 'hotmail.com', 'yaho.com': 'yahoo.com',
+    'yahou.com': 'yahoo.com', 'yahoo.co': 'yahoo.com', 'outlok.com': 'outlook.com', 'outllok.com': 'outlook.com',
+    'outlook.co': 'outlook.com', 'icloud.co': 'icloud.com', 'orange.f': 'orange.fr', 'wanadoo.f': 'wanadoo.fr' };
+  function checkEmail(quiet) {
+    const v = fEmail.value.trim().toLowerCase();
+    fEmail.value = v;
+    const at = v.lastIndexOf('@');
+    const domain = at > 0 ? v.slice(at + 1) : '';
+    const local = at > 0 ? v.slice(0, at) : '';
+    let err = '';
+    if (!/^[^\s@,;]+@[^\s@,;]+\.[a-z]{2,}$/.test(v)) err = msg('email');
+    else if (FAKE_DOMAINS.indexOf(domain) >= 0 || local === domain.split('.')[0] || /^(test|asdf|aaa+|abc)$/.test(local)) err = msg('emailFake');
+    const slot = document.getElementById('e-email');
+    if (!err && TYPOS[domain]) {                                        // suggestion corrigeable en un clic
+      const fixed = v.slice(0, at + 1) + TYPOS[domain];
+      slot.hidden = false;
+      slot.textContent = msg('typo').replace('{s}', fixed) + ' ';
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = msg('typoFix');
+      b.addEventListener('click', () => { fEmail.value = fixed; checkEmail(); fEmail.focus(); });
+      slot.appendChild(b);
+      fEmail.classList.remove('bad');
+      return true;                                                      // non bloquant : on suggère, on n'impose pas
+    }
+    return quiet && !fEmail.dataset.touched ? !err : showErr(fEmail, 'e-email', err);
+  }
+
+  [fName, fPhone, fEmail].forEach(el => {
+    el.addEventListener('blur', () => { el.dataset.touched = '1'; });
+    el.addEventListener('input', () => { if (el.dataset.touched) validate(true); });
+  });
+  fName.addEventListener('blur', () => checkName());
+  fPhone.addEventListener('blur', () => checkPhone());
+  fEmail.addEventListener('blur', () => checkEmail());
+  ccSel.addEventListener('change', () => { syncPlaceholder(); if (fPhone.dataset.touched) checkPhone(); });
+  syncPlaceholder();
+
+  function validate(quiet) {
+    const a = checkName(quiet), b = checkPhone(quiet), c = checkEmail(quiet);
+    return a && b && c;
+  }
+
   /* ============ Lead → Google Sheets + alerte téléphone ============ */
   // Coller ici l'URL « /exec » du déploiement Apps Script (fichier google-apps-script.gs,
   // pas à pas dans README.md). Vide = désactivé — Netlify Forms reste le canal principal.
@@ -516,6 +726,12 @@
     // On gère l'envoi nous-mêmes : un POST natif vers merci.html (fichier statique)
     // renvoie 404 tant que la détection « Forms » de Netlify n'est pas activée.
     ev.preventDefault();
+    [fName, fPhone, fEmail].forEach(el => { el.dataset.touched = '1'; });
+    if (!validate()) {                                   // rien ne part tant que les 3 champs ne tiennent pas
+      const bad = document.querySelector('#f-name.bad, #f-phone.bad, #f-email.bad');
+      if (bad) { bad.focus(); bad.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+      return;
+    }
     const body = new URLSearchParams(new FormData(document.forms['visite-miami'])).toString();
     try {
       // Canal principal : Google Sheets (Apps Script). keepalive : survit à la navigation.

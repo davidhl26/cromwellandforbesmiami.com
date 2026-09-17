@@ -47,11 +47,22 @@
 > Conversion « Contact » (JuPRCIu71OccEN7agspE) déclenchée sur tout clic tel:/wa.me
 > (tracking.js, 17/09) → les appels et WhatsApp depuis le site sont attribués aux campagnes.
 >
+> Contrôle complet du 17/09 (soir), par l'API : 3 campagnes SERVING (Miami et NY en
+> « apprentissage », la FR en attente d'examen de son annonce), 42 mots-clés expression
+> tous approuvés, 14 annonces approuvées, facturation APPROVED, étiquettes de conversion
+> du compte identiques à celles de tracking.js (formulaire + Contact), aucune application
+> automatique de recommandations active (recommendation_subscription vide), négatifs
+> partagés sur les 3 campagnes, aucun calendrier de diffusion (24 h/24).
+>
 > Reste à faire par David dans l'interface (l'API ne le permet pas) :
-> 1. Compte → Paramètres → **désactiver l'application automatique des recommandations**.
-> 2. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
-> 3. Vérifier sous 48 h que l'asset 561 passe en APPROVED (Composants → Appel) ; sinon
+> 1. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
+> 2. Vérifier sous 48 h que l'asset 561 passe en APPROVED (Composants → Appel) ; sinon
 >    lier la Search Console à Google Ads (Admin → Comptes associés) comme preuve.
+>
+> Reste à faire par l'API (à la prochaine session, sur validation) :
+> - campagne FR « Acheteurs Miami Beach » : elle n'a que le composant Appel — poser
+>   accroches, extraits et liens annexes en français ;
+> - lundi 21/09 : premier bilan (termes de recherche, zones, dépense, leads) et négatifs.
 >
 > Les sections ci-dessous décrivent le plan d'origine (import Editor) — conservé comme
 > référence ; les CSV restent la source des textes d'annonces et des mots-clés.

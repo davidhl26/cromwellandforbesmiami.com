@@ -1,5 +1,29 @@
 # Restructuration Google Ads — Miami + New York (10/09/2026)
 
+> **APPLIQUÉ le 17/09/2026** directement dans le compte (via le connecteur Markifact,
+> validation de David ligne par ligne). État réel du compte 2406510315 :
+>
+> | Campagne | ID | Type | Ciblage | Enchères | Budget | État |
+> |---|---|---|---|---|---|---|
+> | Miami Luxury Real Estate | 24183460480 | Performance Max (l'ancienne) | présence ou intérêt, langue FR | Max conversions | 50 $/j | **PAUSE** — témoin, ne pas relancer |
+> | Cromwell Forbes - Acheteurs Miami Beach | 24253294503 | Search FR (créée par David le 16/09) | FR/BE/CH/CA/FL → **Présence** | clics max, plafond 4 $ | 20 $/j | active |
+> | CF - Miami Buyers | 24259720535 | Search, 9 groupes, 22 mots-clés expression | Miami-Dade + Broward, **Présence** | clics max, plafond 6 $ | 30 $/j | créée en pause → activée 17/09 |
+> | CF - New York to Miami | 24259720976 | Search, 5 groupes, 10 mots-clés expression | NYC + Nassau + Westchester, **Présence** | clics max, plafond 4 $ | 20 $/j | créée en pause → activée 17/09 |
+>
+> Liste de négatifs partagée « CF - Negatifs universels » (ID 12240970541, 80 termes EN+FR)
+> rattachée aux 3 campagnes actives. Composants (accroches, extraits « Neighborhoods »,
+> 4 liens annexes) sur Miami + NY. Étiquette de conversion `ZJgLCLTL4PEcEN7agspE` posée
+> dans tracking.js. Diagnostic complet de la PMax : 295 $ du 28/08 au 15/09, 46 % dépensés
+> hors États-Unis, clics à 0,43 $ (display/TV connectée) à Miami, 0 conversion remontée.
+>
+> Restent à faire par David dans l'interface (l'API ne le permet pas) :
+> 1. Outils → Paramètres du compte → **Signalement des appels** : accepter les conditions
+>    (sans ça Google refuse le composant Appel — tenté, refusé pour ce motif).
+> 2. Compte → Paramètres → **désactiver l'application automatique des recommandations**.
+>
+> Les sections ci-dessous décrivent le plan d'origine (import Editor) — conservé comme
+> référence ; les CSV restent la source des textes d'annonces et des mots-clés.
+
 Application de la méthode Jono Catliff (voir `NOTES-VIDEO.md`). Périmètre décidé par David :
 **Miami et New York uniquement** (Tel Aviv et Paris : landings prêtes, campagnes non lancées).
 

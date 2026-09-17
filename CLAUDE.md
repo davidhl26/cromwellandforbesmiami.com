@@ -62,8 +62,19 @@ ligne discrète, sans en faire une boucle d'approbation.
   en attente), une intention par groupe, expression, épingle unique pos. 1,
   négatifs partagés, présence-pas-intérêt, CSV Google Ads Editor prêts.
   Variantes landing `?c=condos|luxury|homes` ajoutées (message match), promesse
-  de rappel « en quelques minutes » (speed to lead). Bloquant : étiquette de
-  conversion à créer (étape 0 de `google-ads/RESTRUCTURE.md`).
+  de rappel « en quelques minutes » (speed to lead).
+- **17/09/2026 — appliqué dans le compte Google Ads** (connecteur claude.ai
+  Markifact, compte 2406510315, validation ligne par ligne de David) : audit
+  API complet (la campagne d'origine était une Performance Max « présence ou
+  intérêt » langue FR : 46 % de la dépense hors USA, 0 conversion), étiquette
+  de conversion `ZJgLCLTL4PEcEN7agspE` posée dans tracking.js, campagne
+  francophone passée en Présence + URL `?lang=fr`, liste de négatifs partagée
+  (ID 12240970541), campagnes Search « CF - Miami Buyers » (24259720535) et
+  « CF - New York to Miami » (24259720976) créées avec groupes, mots-clés,
+  annonces épinglées et composants. Tableau d'état dans
+  `google-ads/RESTRUCTURE.md`. Le connecteur Markifact = l'outil de gestion
+  depuis claude.ai (lecture + écriture avec approbation par écriture) ; les
+  identifiants Google restent chez Markifact/David, jamais dans ce repo.
 - En attente de David : déploiement du script Apps Script (~3 min, README),
   photos Colombie/Italie/Chine, vidéos de survol optionnelles, identifiants
   Google Ads / Meta Pixel pour tracking.js.

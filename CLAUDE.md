@@ -75,6 +75,11 @@ ligne discrète, sans en faire une boucle d'approbation.
   `google-ads/RESTRUCTURE.md`. Le connecteur Markifact = l'outil de gestion
   depuis claude.ai (lecture + écriture avec approbation par écriture) ; les
   identifiants Google restent chez Markifact/David, jamais dans ce repo.
+- 17/09 soir : composant Appel 561 (Laurent) sur les 3 campagnes (déblocage = réglage
+  « Enregistrement des appels » accepté par David dans l'interface) ; budgets 100 $/j ×3 ;
+  campagne FR restructurée (5 groupes, composants FR) ; campagne « CF - Israel to Miami »
+  construite en pause (hébreu + anglais, landing `?c=telaviv`). Crédits Markifact épuisés
+  avant la fin : liste précise des restes dans `google-ads/RESTRUCTURE.md`.
 - En attente de David : déploiement du script Apps Script (~3 min, README),
   photos Colombie/Italie/Chine, vidéos de survol optionnelles, identifiants
   Google Ads / Meta Pixel pour tracking.js.

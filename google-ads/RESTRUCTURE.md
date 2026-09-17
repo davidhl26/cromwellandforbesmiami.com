@@ -6,9 +6,10 @@
 > | Campagne | ID | Type | Ciblage | Enchères | Budget | État |
 > |---|---|---|---|---|---|---|
 > | Miami Luxury Real Estate | 24183460480 | Performance Max (l'ancienne) | présence ou intérêt, langue FR | Max conversions | 50 $/j | **PAUSE** — témoin, ne pas relancer |
-> | Cromwell Forbes - Acheteurs Miami Beach | 24253294503 | Search FR (créée par David le 16/09) | FR/BE/CH/CA/FL → **Présence** | clics max, plafond 4 $ | 20 $/j | active |
-> | CF - Miami Buyers | 24259720535 | Search, 9 groupes, 22 mots-clés expression | Miami-Dade + Broward, **Présence** | clics max, plafond 6 $ | 30 $/j | créée en pause → activée 17/09 |
-> | CF - New York to Miami | 24259720976 | Search, 5 groupes, 10 mots-clés expression | NYC + Nassau + Westchester, **Présence** | clics max, plafond 4 $ | 20 $/j | créée en pause → activée 17/09 |
+> | Cromwell Forbes - Acheteurs Miami Beach | 24253294503 | Search FR (créée par David le 16/09), restructurée le 17/09 soir : 5 groupes une-intention (Appartement, Luxe, Immobilier Miami Beach, Investir, Maison), 17 mots-clés expression, annonces FR épinglées, accroches + extraits « Quartiers » + 4 liens annexes ; « Groupe d'annonces 1 » d'origine mis en pause | FR/BE/CH/CA/FL → **Présence** | clics max, plafond 4 $ | **100 $/j** (17/09 soir) | active |
+> | CF - Miami Buyers | 24259720535 | Search, 9 groupes, 22 mots-clés expression | Miami-Dade + Broward, **Présence** | clics max, plafond 6 $ | **100 $/j** (17/09 soir) | créée en pause → activée 17/09 |
+> | CF - New York to Miami | 24259720976 | Search, 5 groupes, 10 mots-clés expression | NYC + Nassau + Westchester, **Présence** | clics max, plafond 4 $ | **100 $/j** (17/09 soir) | créée en pause → activée 17/09 |
+> | CF - Israel to Miami | 24254798595 | Search, 4 groupes (3 en hébreu + 1 en anglais), 18 mots-clés expression, annonces hébreu/anglais épinglées, landing `?c=telaviv` (Orian), négatifs partagés, accroches hébreu | Israël, **Présence**, toutes langues | clics max, plafond 4 $ | 100 $/j | **créée EN PAUSE le 17/09 soir** — à activer sur le « go » de David |
 >
 > Liste de négatifs partagée « CF - Negatifs universels » (ID 12240970541, 80 termes EN+FR)
 > rattachée aux 3 campagnes actives. Composants (accroches, extraits « Neighborhoods »,
@@ -54,15 +55,25 @@
 > automatique de recommandations active (recommendation_subscription vide), négatifs
 > partagés sur les 3 campagnes, aucun calendrier de diffusion (24 h/24).
 >
+> 17/09 (soir), sur instruction de David (« lance ce qui reste, 100 $/jour par campagne ») :
+> budgets à 100 $/j sur les 3 campagnes actives (300 $/j ≈ 9 100 $/mois) ; campagne FR
+> restructurée ; campagne Israël construite en pause (Paris = la campagne FR de David, pas
+> de doublon). **Les crédits Markifact se sont épuisés en cours de route** : restent à poser
+> (1) l'annonce du groupe FR « Appartement Luxe Miami » (groupe sans annonce = ne diffuse
+> pas), (2) sur Israël : accroches anglaises du groupe EN, liens annexes hébreu, liens
+> annexes/extraits anglais sur le groupe EN, extrait « שכונות », (3) la vérification GAQL de
+> l'ensemble, (4) l'activation d'Israël. Reprendre dès que les crédits sont rechargés.
+>
 > Reste à faire par David dans l'interface (l'API ne le permet pas) :
-> 1. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
-> 2. Vérifier sous 48 h que l'asset 561 passe en APPROVED (Composants → Appel) ; sinon
+> 1. Recharger les crédits Markifact (markifact.com/app/pricing) puis dire « crédits ok ».
+> 2. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
+> 3. Vérifier sous 48 h que l'asset 561 passe en APPROVED (Composants → Appel) ; sinon
 >    lier la Search Console à Google Ads (Admin → Comptes associés) comme preuve.
 >
-> Reste à faire par l'API (à la prochaine session, sur validation) :
-> - campagne FR « Acheteurs Miami Beach » : elle n'a que le composant Appel — poser
->   accroches, extraits et liens annexes en français ;
-> - lundi 21/09 : premier bilan (termes de recherche, zones, dépense, leads) et négatifs.
+> Reste à faire par l'API :
+> - les 4 points ci-dessus dès les crédits rechargés ;
+> - lundi 21/09 : premier bilan (termes de recherche, zones, dépense, leads) et négatifs ;
+> - après ~30 conversions : passer les campagnes de « clics max » à « conversions max ».
 >
 > Les sections ci-dessous décrivent le plan d'origine (import Editor) — conservé comme
 > référence ; les CSV restent la source des textes d'annonces et des mots-clés.

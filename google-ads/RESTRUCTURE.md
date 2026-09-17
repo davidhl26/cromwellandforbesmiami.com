@@ -58,20 +58,20 @@
 > 17/09 (soir), sur instruction de David (« lance ce qui reste, 100 $/jour par campagne ») :
 > budgets à 100 $/j sur les 3 campagnes actives (300 $/j ≈ 9 100 $/mois) ; campagne FR
 > restructurée ; campagne Israël construite en pause (Paris = la campagne FR de David, pas
-> de doublon). **Les crédits Markifact se sont épuisés en cours de route** : restent à poser
-> (1) l'annonce du groupe FR « Appartement Luxe Miami » (groupe sans annonce = ne diffuse
-> pas), (2) sur Israël : accroches anglaises du groupe EN, liens annexes hébreu, liens
-> annexes/extraits anglais sur le groupe EN, extrait « שכונות », (3) la vérification GAQL de
-> l'ensemble, (4) l'activation d'Israël. Reprendre dès que les crédits sont rechargés.
+> de doublon). Les crédits Markifact se sont épuisés en cours de route ; David a rechargé le
+> 18/09 et tout a été terminé et VÉRIFIÉ par GAQL : annonce du groupe FR « Appartement Luxe
+> Miami » posée (5/5 groupes FR avec annonce, tous approuvés, 35 mots-clés FR+IL approuvés) ;
+> Israël complète (accroches hébreu au niveau campagne + anglaises sur le groupe EN, 4 liens
+> annexes hébreu, liens annexes/extrait anglais rattachés au groupe EN, extrait « שכונות ») ;
+> **asset Appel 561 APPROUVÉ** sur les 3 campagnes actives. Les nouveaux groupes FR
+> diffusent déjà (103 impressions le 18/09 sur « Immobilier Miami Beach »).
+> Il ne reste qu'une décision : activer « CF - Israel to Miami » sur le « go » de David.
 >
 > Reste à faire par David dans l'interface (l'API ne le permet pas) :
-> 1. Recharger les crédits Markifact (markifact.com/app/pricing) puis dire « crédits ok ».
-> 2. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
-> 3. Vérifier sous 48 h que l'asset 561 passe en APPROVED (Composants → Appel) ; sinon
->    lier la Search Console à Google Ads (Admin → Comptes associés) comme preuve.
+> 1. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
+> 2. Dire « go Israël » (ou non) pour activer la 4e campagne à 100 $/j.
 >
 > Reste à faire par l'API :
-> - les 4 points ci-dessus dès les crédits rechargés ;
 > - lundi 21/09 : premier bilan (termes de recherche, zones, dépense, leads) et négatifs ;
 > - après ~30 conversions : passer les campagnes de « clics max » à « conversions max ».
 >

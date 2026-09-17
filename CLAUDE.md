@@ -78,8 +78,8 @@ ligne discrète, sans en faire une boucle d'approbation.
 - 17/09 soir : composant Appel 561 (Laurent) sur les 3 campagnes (déblocage = réglage
   « Enregistrement des appels » accepté par David dans l'interface) ; budgets 100 $/j ×3 ;
   campagne FR restructurée (5 groupes, composants FR) ; campagne « CF - Israel to Miami »
-  construite en pause (hébreu + anglais, landing `?c=telaviv`). Crédits Markifact épuisés
-  avant la fin : liste précise des restes dans `google-ads/RESTRUCTURE.md`.
+  construite en pause (hébreu + anglais, landing `?c=telaviv`), terminée et vérifiée
+  le 18/09 ; asset Appel 561 approuvé. État et restes dans `google-ads/RESTRUCTURE.md`.
 - En attente de David : déploiement du script Apps Script (~3 min, README),
   photos Colombie/Italie/Chine, vidéos de survol optionnelles, identifiants
   Google Ads / Meta Pixel pour tracking.js.

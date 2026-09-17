@@ -28,6 +28,21 @@
 > appels des annonces sonnent chez Laurent ; correction définitive = chat assistance Google
 > Ads (activer l'enregistrement des appels sur le compte 240-651-0315), puis créer l'asset
 > 561 par l'API et retirer le 954 des 3 campagnes CF.
+>
+> Diagnostic vérifié le 17/09 (soir), par l'API en mode `validate_only` (rien modifié) :
+> - l'accès de David est ADMIN, le compte est USD / America/New_York, signalement des
+>   appels activé (conversion d'appel 179) — ni droits, ni pays, ni réglage en cause ;
+> - créer un asset Appel 561, MODIFIER le numéro de l'asset 954 existant, ou créer après
+>   avoir désactivé le signalement des appels dans la même requête : les trois échouent sur
+>   la même erreur `Customer consent for call recording Terms of Service is required`.
+>   Le verrou est donc uniquement le drapeau de consentement « Conditions supplémentaires
+>   relatives aux annonces Appel » (enregistrement des appels par défaut depuis le
+>   01/07/2026), que Google ne laisse poser que dans l'interface : Admin → Paramètres du
+>   compte → « Annonces Appel » → « Enregistrement des appels » → choix + Enregistrer ;
+> - le numéro absent de la page d'atterrissage N'ÉTAIT PAS la cause de l'erreur de
+>   sauvegarde (il reste en pied de page : Google vérifie le numéro une fois l'asset créé) ;
+> - l'édition « Modifier l'appel » de l'interface recrée un asset (les assets sont
+>   dédupliqués par contenu), d'où la même erreur qu'à la création.
 > Conversion « Contact » (JuPRCIu71OccEN7agspE) déclenchée sur tout clic tel:/wa.me
 > (tracking.js, 17/09) → les appels et WhatsApp depuis le site sont attribués aux campagnes.
 >

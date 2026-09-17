@@ -7,6 +7,7 @@
 const TRACKING = {
   googleAdsId: 'AW-18408844638', // balise Google Ads (installée 09/09/2026)
   googleConvLabel: 'ZJgLCLTL4PEcEN7agspE', // action « Consultation Form Submit » (créée dans le compte, posée le 17/09/2026)
+  googleContactLabel: 'JuPRCIu71OccEN7agspE', // action « Contact » : clic sur « appeler » ou WhatsApp (posée le 17/09/2026)
   metaPixelId: ''      // ex. '1234567890'  — Meta Events Manager → Pixel
 };
 
@@ -25,6 +26,15 @@ const TRACKING = {
     window.gtag('config', TRACKING.googleAdsId);
     if (isMerci && TRACKING.googleConvLabel) {
       window.gtag('event', 'conversion', { send_to: TRACKING.googleAdsId + '/' + TRACKING.googleConvLabel });
+    }
+    // Un clic « appeler » ou WhatsApp est un contact réel, pas une visite : il compte
+    // comme conversion « Contact », attribuée à la campagne qui a amené le visiteur.
+    if (TRACKING.googleContactLabel) {
+      document.addEventListener('click', function (ev) {
+        const a = ev.target && ev.target.closest && ev.target.closest('a[href^="tel:"], a[href*="wa.me/"]');
+        if (!a) return;
+        window.gtag('event', 'conversion', { send_to: TRACKING.googleAdsId + '/' + TRACKING.googleContactLabel });
+      }, true);
     }
   }
 

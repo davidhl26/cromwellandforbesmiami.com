@@ -16,10 +16,13 @@
 > dans tracking.js. Diagnostic complet de la PMax : 295 $ du 28/08 au 15/09, 46 % dépensés
 > hors États-Unis, clics à 0,43 $ (display/TV connectée) à Miami, 0 conversion remontée.
 >
-> Restent à faire par David dans l'interface (l'API ne le permet pas) :
-> 1. Outils → Paramètres du compte → **Signalement des appels** : accepter les conditions
->    (sans ça Google refuse le composant Appel — tenté, refusé pour ce motif).
-> 2. Compte → Paramètres → **désactiver l'application automatique des recommandations**.
+> Composant Appel : l'asset (954) 228-3601 existait déjà (ID 412747640735, créé le 25/08
+> sur la PMax) — la CRÉATION d'un nouvel asset Appel par l'API exige un consentement
+> « enregistrement des appels » impossible à donner par l'API ; on RATTACHE l'existant
+> (campaignAsset, fieldType CALL) — fait le 17/09 sur les 3 campagnes actives.
+>
+> Reste à faire par David dans l'interface (l'API ne le permet pas) :
+> Compte → Paramètres → **désactiver l'application automatique des recommandations**.
 >
 > Les sections ci-dessous décrivent le plan d'origine (import Editor) — conservé comme
 > référence ; les CSV restent la source des textes d'annonces et des mots-clés.

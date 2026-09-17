@@ -6,7 +6,7 @@
    ============================================================ */
 const TRACKING = {
   googleAdsId: 'AW-18408844638', // balise Google Ads (installée 09/09/2026)
-  googleConvLabel: '', // ex. 'AbCdEfGhIjK' — étiquette de l'action de conversion « Lead »
+  googleConvLabel: 'ZJgLCLTL4PEcEN7agspE', // action « Consultation Form Submit » (créée dans le compte, posée le 17/09/2026)
   metaPixelId: ''      // ex. '1234567890'  — Meta Events Manager → Pixel
 };
 

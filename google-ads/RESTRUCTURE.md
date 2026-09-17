@@ -21,13 +21,14 @@
 > « enregistrement des appels » impossible à donner par l'API ; on RATTACHE l'existant
 > (campaignAsset, fieldType CALL) — fait le 17/09 sur les 3 campagnes actives.
 >
-> Ligne de Laurent : **+1 561 572-8480**. Créer un asset Appel avec ce numéro est bloqué
-> (API : consentement « enregistrement des appels » absent ; interface : « Une erreur est
-> survenue » sur le composant ET sur le consentement — blocage côté compte, 17/09).
-> Plan B retenu : dans Google Voice (compte de David), associer le 561 au 954 pour que les
-> appels des annonces sonnent chez Laurent ; correction définitive = chat assistance Google
-> Ads (activer l'enregistrement des appels sur le compte 240-651-0315), puis créer l'asset
-> 561 par l'API et retirer le 954 des 3 campagnes CF.
+> Ligne de Laurent : **+1 561 572-8480** — **EN PLACE depuis le 17/09 (soir)** : asset Appel
+> ID 422126778694 créé par l'API et rattaché (campaignAsset CALL, ENABLED) aux 3 campagnes
+> actives ; les liens du 954 sur ces 3 campagnes sont RETIRÉS (le 954 ne reste que sur la
+> PMax en pause). Vérifié par GAQL. Le 561 était en `REVIEW_IN_PROGRESS` à la création :
+> Google vérifie que le numéro figure sur la page d'atterrissage (il est en pied de page).
+> Le déblocage : David a enregistré le réglage « Enregistrement des appels » (Admin →
+> Paramètres du compte → « Annonces Appel ») dans une fenêtre de navigation privée — la
+> validation à blanc passait dans la minute. Plan B Google Voice devenu inutile.
 >
 > Diagnostic vérifié le 17/09 (soir), par l'API en mode `validate_only` (rien modifié) :
 > - l'accès de David est ADMIN, le compte est USD / America/New_York, signalement des
@@ -47,9 +48,10 @@
 > (tracking.js, 17/09) → les appels et WhatsApp depuis le site sont attribués aux campagnes.
 >
 > Reste à faire par David dans l'interface (l'API ne le permet pas) :
-> 1. Google Voice → Numéros associés → 561 572 8480 (plan B ci-dessus).
-> 2. Compte → Paramètres → **désactiver l'application automatique des recommandations**.
-> 3. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
+> 1. Compte → Paramètres → **désactiver l'application automatique des recommandations**.
+> 2. Recoller `google-apps-script.gs` + « Nouvelle version » (feuille encore en 7 colonnes).
+> 3. Vérifier sous 48 h que l'asset 561 passe en APPROVED (Composants → Appel) ; sinon
+>    lier la Search Console à Google Ads (Admin → Comptes associés) comme preuve.
 >
 > Les sections ci-dessous décrivent le plan d'origine (import Editor) — conservé comme
 > référence ; les CSV restent la source des textes d'annonces et des mots-clés.
